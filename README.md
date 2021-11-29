@@ -10,6 +10,11 @@
 6. 2006527222 Andini Putri Pramudya Wardani
 7. 2006525330 Ridjky Tegar Perkasa
 
+## APK Link
+
+Link berikut merupakan link dari APK kelompok kami:
+[pedulilindungi2.0-mobile-app](https://github.com/PBP-A07/pedulilindungi2-mobile-app/releases)
+
 ## Latar Belakang
 
 Untuk mengendalikan Pandemi Covid-19, pemerintah sedang menggencarkan program vaksinasi. Saat ini, pendaftaran vaksinasi bisa dilakukan secara online, namun terpisah antara satu penyelenggara dengan penyelenggara lainnya. Hal ini menyebabkan masyarakat bingung karena informasi tidak terpusat. Melihat fenomena tersebut, kami berinisiatif untuk mencoba membuat website yang dapat mengumpulkan semua penyelenggara vaksin ke dalam satu website sehingga masyarakat dapat lebih mudah untuk melihat daftar-daftar vaksin dan waktu vaksin yang tersedia. Dengan adanya website ini, kami harap dapat membantu masyarakat, penyedia vaksin, dan pemerintah untuk bersama-sama meningkatkan laju vaksinasi sehingga pandemi lebih cepat berakhir.
