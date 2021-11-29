@@ -66,3 +66,7 @@ Untuk mengendalikan Pandemi Covid-19, pemerintah sedang menggencarkan program va
 1. Penerima: masyarakat umum yang ingin melakukan vaksinasi.
 2. Penyedia: organisasi penyedia vaksin dan tempat melakukan vaksinasi.
 3. Admin: memvalidasi data pengguna.
+
+## Credit
+
+Workflow dari project ini mengacu pada gist [ini](https://gist.github.com/determinedguy/68b9a39b49099222f7c4b12eb617c643).
