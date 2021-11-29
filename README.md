@@ -1,5 +1,8 @@
 # pedulilindungi2.0
 
+[![Pre-Release](https://github.com/PBP-A07/pedulilindungi2-mobile-app/actions/workflows/pre-release.yml/badge.svg)](https://github.com/PBP-A07/pedulilindungi2-mobile-app/actions/workflows/pre-release.yml)
+[![Release](https://github.com/PBP-A07/pedulilindungi2-mobile-app/actions/workflows/release.yml/badge.svg)](https://github.com/PBP-A07/pedulilindungi2-mobile-app/actions/workflows/release.yml)
+
 ## Kelompok A07
 
 1. 2006595892 Erick Ezrandy
