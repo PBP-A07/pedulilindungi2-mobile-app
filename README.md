@@ -15,7 +15,6 @@
 
 ## APK Link
 
-Link berikut merupakan link dari APK kelompok kami:
 [pedulilindungi2.0-mobile-app](https://github.com/PBP-A07/pedulilindungi2-mobile-app/releases)
 
 ## Latar Belakang
