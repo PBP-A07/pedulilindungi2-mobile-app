@@ -29,7 +29,18 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  account:
+    path: account
+  biodata:
+    path: biodata
+  daftar_vaksin:
+    path: daftar_vaksin
+  profil_penerima:
+    path: profil_penerima
+  profil_penyedia:
+    path: profil_penyedia
+  tambah_vaksin:
+    path: tambah_vaksin
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
