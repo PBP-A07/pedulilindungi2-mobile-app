@@ -30,7 +30,7 @@ class BiodataPenyediaState extends State<BiodataPenyedia> {
 
   Future<String> postData() async {
     final response = await http.post(
-        Uri.parse("http://10.0.2.2:8000/biodata/penyedia/flutter"),
+        Uri.parse("https://pedulilindungi2.herokuapp.com/biodata/penyedia/flutter"),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
