@@ -7,11 +7,19 @@ class CustomPrimaryButton extends StatelessWidget {
   final Color buttonColor;
   final String textValue;
   final Color textColor;
+  final bool isKembali;
+  final bool isSignUp;
+  final bool isSignIn;
 
-  CustomPrimaryButton(
-      {required this.buttonColor,
+  const CustomPrimaryButton(
+      {Key? key,
+      required this.buttonColor,
       required this.textValue,
-      required this.textColor});
+      required this.textColor,
+      required this.isKembali,
+      required this.isSignUp,
+      required this.isSignIn})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +35,16 @@ class CustomPrimaryButton extends StatelessWidget {
         child: Material(
           color: Colors.transparent,
           child: InkWell(
-            onTap: () {},
+            onTap: () {
+              // if (isKembali) {
+              //   Navigator.pushReplacement(
+              //     context,MaterialPageRoute(
+              //               builder: (context) =>
+              //                   const (title: "PeduliLindungi2.0")), // Ini mestinya balik ke homepage lagi
+              //         );
+              //   );
+              // }
+            },
             borderRadius: BorderRadius.circular(14.0),
             child: Center(
               child: Text(

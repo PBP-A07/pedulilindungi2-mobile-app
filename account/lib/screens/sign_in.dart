@@ -1,3 +1,6 @@
+// Referensi: https://github.com/whisnuys/simple-login-page
+
+import 'package:account/screens/sign_up.dart';
 import 'package:flutter/material.dart';
 import '../widgets/primary_button.dart';
 import '../theme.dart';
@@ -141,8 +144,22 @@ class _SigninPageState extends State<SigninPage> {
               ),
               CustomPrimaryButton(
                 buttonColor: primaryBlue,
-                textValue: 'Register',
+                textValue: 'SIGN IN',
                 textColor: Colors.white,
+                isKembali: false,
+                isSignIn: true,
+                isSignUp: false,
+              ),
+              const SizedBox(
+                height: 32,
+              ),
+              CustomPrimaryButton(
+                buttonColor: secondaryRed,
+                textValue: 'Kembali',
+                textColor: Colors.white,
+                isKembali: true,
+                isSignIn: false,
+                isSignUp: false,
               ),
               const SizedBox(
                 height: 40,
@@ -156,8 +173,11 @@ class _SigninPageState extends State<SigninPage> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pop(
+                      Navigator.pushReplacement(
                         context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                const SignupPage(title: "PeduliLindungi2.0")),
                       );
                     },
                     child: Text(
