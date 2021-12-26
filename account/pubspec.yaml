@@ -1,7 +1,8 @@
 name: account
 description: A new Flutter package project.
 version: 0.0.1
-homepage:
+publish_to: "none"
+homepage: sign_up.dart
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
@@ -10,6 +11,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  pedulilindungi2_mobile_app:
+    path: ../.
 
 dev_dependencies:
   flutter_test:
@@ -24,7 +27,7 @@ flutter:
 
   # To add assets to your package, add an assets section, like this:
   # assets:
-  #   - images/a_dot_burr.jpeg
+  #   - assets/images/
   #   - images/a_dot_ham.jpeg
   #
   # For details regarding assets in packages, see
