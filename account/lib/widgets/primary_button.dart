@@ -1,5 +1,6 @@
 import 'package:account/screens/sign_up.dart';
 import 'package:flutter/material.dart';
+import 'package:pedulilindungi2_mobile_app/common/cookie_request.dart';
 
 import '../theme.dart';
 // import 'package:studi_kasus/theme.dart';
@@ -11,22 +12,22 @@ class CustomPrimaryButton extends StatelessWidget {
   final bool isKembali;
   final bool isSignUp;
   final bool isSignIn;
-  final dynamic request;
+  final CookieRequest? request;
   final String? username;
   final String? password;
 
-  void login() async {
+  dynamic login() async {
     // 'username' and 'password' should be the values of the user login form.
     final response =
-        await request.login("http://127.0.0.1:8000/auth/flutter-login/", {
+        await request!.login("http://127.0.0.1:8000/auth/flutter-signin/", {
       'username': username,
       'password': password,
     });
-    // if (request.loggedIn) {
-    //   // Code here will run if the login succeeded.
-    // } else {
-    //   // Code here will run if the login failed (wrong username/password).
-    // }
+    if (request!.loggedIn) {
+      return response;
+    } else {
+      return response;
+    }
   }
 
   const CustomPrimaryButton(
@@ -63,7 +64,7 @@ class CustomPrimaryButton extends StatelessWidget {
               //               builder: (context) =>
               //                   const (title: "PeduliLindungi2.0")), // Ini mestinya balik ke homepage lagi
               //         );
-              //   );
+              //   };
               if (isSignIn) {
                 login();
                 Navigator.pushReplacement(

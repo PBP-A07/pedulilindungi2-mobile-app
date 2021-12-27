@@ -2,7 +2,7 @@
 
 import 'package:account/screens/sign_up.dart';
 import 'package:flutter/material.dart';
-import 'package:pedulilindungi2_mobile_app/main.dart';
+import 'package:pedulilindungi2_mobile_app/common/cookie_request.dart';
 import '../widgets/primary_button.dart';
 import '../theme.dart';
 import 'package:provider/provider.dart';
@@ -17,8 +17,6 @@ class SigninPage extends StatefulWidget {
 }
 
 class _SigninPageState extends State<SigninPage> {
-  final _loginFormKey = GlobalKey<FormState>();
-
   String username = "";
   String password = "";
 
