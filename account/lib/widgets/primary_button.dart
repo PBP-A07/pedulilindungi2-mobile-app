@@ -22,13 +22,11 @@ class CustomPrimaryButton extends StatelessWidget {
       'username': username,
       'password': password,
     });
-    if (request.loggedIn) {
-      // Code here will run if the login succeeded.
-      print("Success!");
-    } else {
-      // Code here will run if the login failed (wrong username/password).
-      print("Not Success :(");
-    }
+    // if (request.loggedIn) {
+    //   // Code here will run if the login succeeded.
+    // } else {
+    //   // Code here will run if the login failed (wrong username/password).
+    // }
   }
 
   const CustomPrimaryButton(
@@ -67,8 +65,6 @@ class CustomPrimaryButton extends StatelessWidget {
               //         );
               //   );
               if (isSignIn) {
-                print(username);
-                print(password);
                 login();
                 Navigator.pushReplacement(
                   context,
@@ -89,6 +85,5 @@ class CustomPrimaryButton extends StatelessWidget {
         ),
       ),
     );
-    ;
   }
 }
