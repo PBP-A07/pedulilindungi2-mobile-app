@@ -13,7 +13,10 @@ class CookieRequest {
 
   bool loggedIn = false;
   bool initialized = false;
+
   String username = "";
+  String email = "";
+  String role = "";
 
   Future init(BuildContext context) async {
     if (!initialized) {
@@ -51,6 +54,8 @@ class CookieRequest {
     if (response.statusCode == 200) {
       loggedIn = true;
       username = json.decode(response.body)['username'];
+      email = json.decode(response.body)['email'];
+      role = json.decode(response.body)['role'];
     } else {
       loggedIn = false;
     }
