@@ -2,8 +2,10 @@
 
 import 'package:account/screens/sign_up.dart';
 import 'package:flutter/material.dart';
+import 'package:pedulilindungi2_mobile_app/main.dart';
 import '../widgets/primary_button.dart';
 import '../theme.dart';
+import 'package:provider/provider.dart';
 
 class SigninPage extends StatefulWidget {
   const SigninPage({Key? key, required this.title}) : super(key: key);
@@ -15,6 +17,11 @@ class SigninPage extends StatefulWidget {
 }
 
 class _SigninPageState extends State<SigninPage> {
+  final _loginFormKey = GlobalKey<FormState>();
+
+  String username = "";
+  String password = "";
+
   bool passwordVisible = false;
   bool passwordConfrimationVisible = false;
   void togglePassword() {
@@ -25,6 +32,8 @@ class _SigninPageState extends State<SigninPage> {
 
   @override
   Widget build(BuildContext context) {
+    final request = context.watch<CookieRequest>();
+
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
@@ -68,8 +77,24 @@ class _SigninPageState extends State<SigninPage> {
                         borderRadius: BorderRadius.circular(14.0),
                       ),
                       child: TextFormField(
+                        onChanged: (String? value) {
+                          setState(() {
+                            username = value!;
+                          });
+                        },
+                        onSaved: (String? value) {
+                          setState(() {
+                            username = value!;
+                          });
+                        },
+                        validator: (value) {
+                          if (value!.isEmpty || value == "") {
+                            return 'Jangan biarkan kosong!';
+                          }
+                          return null;
+                        },
                         decoration: InputDecoration(
-                          hintText: 'Email',
+                          hintText: 'Username',
                           hintStyle: heading6.copyWith(color: textGrey),
                           border: const OutlineInputBorder(
                             borderSide: BorderSide.none,
@@ -87,6 +112,22 @@ class _SigninPageState extends State<SigninPage> {
                       ),
                       child: TextFormField(
                         obscureText: !passwordVisible,
+                        onChanged: (String? value) {
+                          setState(() {
+                            password = value!;
+                          });
+                        },
+                        onSaved: (String? value) {
+                          setState(() {
+                            password = value!;
+                          });
+                        },
+                        validator: (value) {
+                          if (value!.isEmpty || value == "") {
+                            return 'Jangan biarkan kosong!';
+                          }
+                          return null;
+                        },
                         decoration: InputDecoration(
                           hintText: 'Password',
                           hintStyle: heading6.copyWith(color: textGrey),
@@ -149,6 +190,9 @@ class _SigninPageState extends State<SigninPage> {
                 isKembali: false,
                 isSignIn: true,
                 isSignUp: false,
+                request: request,
+                username: username,
+                password: password,
               ),
               const SizedBox(
                 height: 32,

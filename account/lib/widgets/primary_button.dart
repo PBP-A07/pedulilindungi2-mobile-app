@@ -1,3 +1,4 @@
+import 'package:account/screens/sign_up.dart';
 import 'package:flutter/material.dart';
 
 import '../theme.dart';
@@ -10,6 +11,25 @@ class CustomPrimaryButton extends StatelessWidget {
   final bool isKembali;
   final bool isSignUp;
   final bool isSignIn;
+  final dynamic request;
+  final String? username;
+  final String? password;
+
+  void login() async {
+    // 'username' and 'password' should be the values of the user login form.
+    final response =
+        await request.login("http://127.0.0.1:8000/auth/flutter-login/", {
+      'username': username,
+      'password': password,
+    });
+    if (request.loggedIn) {
+      // Code here will run if the login succeeded.
+      print("Success!");
+    } else {
+      // Code here will run if the login failed (wrong username/password).
+      print("Not Success :(");
+    }
+  }
 
   const CustomPrimaryButton(
       {Key? key,
@@ -18,7 +38,10 @@ class CustomPrimaryButton extends StatelessWidget {
       required this.textColor,
       required this.isKembali,
       required this.isSignUp,
-      required this.isSignIn})
+      required this.isSignIn,
+      this.request,
+      this.username,
+      this.password})
       : super(key: key);
 
   @override
@@ -43,7 +66,17 @@ class CustomPrimaryButton extends StatelessWidget {
               //                   const (title: "PeduliLindungi2.0")), // Ini mestinya balik ke homepage lagi
               //         );
               //   );
-              // }
+              if (isSignIn) {
+                print(username);
+                print(password);
+                login();
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          const SignupPage(title: "PeduliLindungi2.0")),
+                );
+              }
             },
             borderRadius: BorderRadius.circular(14.0),
             child: Center(
