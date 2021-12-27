@@ -25,7 +25,6 @@ class CustomPrimaryButton extends StatelessWidget {
       'password': password,
     });
     if (request!.loggedIn) {
-      print(response);
       return response;
     } else {
       return response;
