@@ -489,7 +489,7 @@ class BiodataPesertaState extends State<BiodataPeserta> {
                                                                           //       builder: (context) => const SigninPage(title: "PeduliLindungi2.0")),
                                                                           // )
                                                                         },
-                                                                    // TODO : arahin ke halaman berikutnya setelah mengisi biodata
+                                                                    // TODO : arahin ke halaman HOME
                                                                     child:
                                                                         const Text(
                                                                       'OK',

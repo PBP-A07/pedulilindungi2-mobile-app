@@ -1,6 +1,5 @@
 // ignore_for_file: avoid_print
 
-import 'package:account/screens/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:pedulilindungi2_mobile_app/common/cookie_request.dart';
 import 'package:biodata/biodata_peserta.dart';

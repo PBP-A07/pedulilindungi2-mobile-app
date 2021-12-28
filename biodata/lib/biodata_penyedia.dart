@@ -351,7 +351,7 @@ class BiodataPenyediaState extends State<BiodataPenyedia> {
                                                           backgroundColor: Colors.black,
                                                         ),
                                                         onPressed: () => {},
-                                                        // TODO : arahin ke halaman berikutnya setelah mengisi biodata 
+                                                        // TODO : arahin ke halaman HOME 
                                                         child: const Text(
                                                           'OK',
                                                           style: TextStyle(
