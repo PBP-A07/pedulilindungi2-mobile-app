@@ -106,21 +106,23 @@ class ItemList extends StatefulWidget {
   );
  
   @override
-  State<ItemList> createState() => _ItemState(list:list, parentID:parentID);
+  State<ItemList> createState() {
+    return _ItemState();
+  }
 }
  
 class _ItemState extends State<ItemList> {
-  final Map list;
-  final int parentID;
+  // final Map list;
+  // final int parentID;
  
-  _ItemState ( {
-    required this.list,
-    required this.parentID
-    }
-  );
+  // _ItemState ( {
+  //   required this.list,
+  //   required this.parentID
+  //   }
+  // );
  
   String getAuthor(pk) {
-    for (var auth in list['accounts']) {
+    for (var auth in widget.list['accounts']) {
       if (auth["pk"] == pk) {
         return auth['fields']['username'];
       }
@@ -129,7 +131,7 @@ class _ItemState extends State<ItemList> {
   }
  
   Future<Map<String, dynamic>> fetchData(i) async {
-  String url = 'http://127.0.0.1:8000/question/' + parentID.toString() + '/discussion/' + i + '/json';
+  String url = 'http://127.0.0.1:8000/question/' + widget.parentID.toString() + '/discussion/' + i + '/json';
   const url2 = 'http://127.0.0.1:8000/json-account';
  
   try {
@@ -170,7 +172,7 @@ class _ItemState extends State<ItemList> {
     return SizedBox(
       height: 300,
       child:ListView.builder(
-      itemCount: list['forums'].length,
+      itemCount: widget.list['forums'].length,
       itemBuilder: (context, i) {
         // print(list['forums'][i]['fields']['author']);
         // print(getAuthor(list['forums'][i]['fields']['author']));
@@ -207,8 +209,8 @@ class _ItemState extends State<ItemList> {
  
         // print(_replies);
  
-        String a = getAuthor(list['forums'][i]['fields']['author']);
-        String time = list['forums'][i]['fields']['created_at'];
+        String a = getAuthor(widget.list['forums'][i]['fields']['author']);
+        String time = widget.list['forums'][i]['fields']['created_at'];
         // print(a);
         // print(time);
         return Container(
@@ -222,7 +224,7 @@ class _ItemState extends State<ItemList> {
            
             child: Column(
               children: <Widget>[
-                Text('${list['forums'][i]['fields']['body']}'),
+                Text('${widget.list['forums'][i]['fields']['body']}'),
                 Text('dibuat oleh '+a+' pada '+time.substring(0, 10)+' pukul ${time.substring(11, 19)}'),
  
               ],
