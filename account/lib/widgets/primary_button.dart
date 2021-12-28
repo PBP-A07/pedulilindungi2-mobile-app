@@ -1,6 +1,8 @@
 import 'package:account/screens/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:pedulilindungi2_mobile_app/common/cookie_request.dart';
+import 'package:pedulilindungi2_mobile_app/screens/before_login.dart';
+import 'package:pedulilindungi2_mobile_app/screens/after_login.dart';
 
 import '../theme.dart';
 // import 'package:studi_kasus/theme.dart';
@@ -58,20 +60,22 @@ class CustomPrimaryButton extends StatelessWidget {
           color: Colors.transparent,
           child: InkWell(
             onTap: () {
-              // if (isKembali) {
-              //   Navigator.pushReplacement(
-              //     context,MaterialPageRoute(
-              //               builder: (context) =>
-              //                   const (title: "PeduliLindungi2.0")), // Ini mestinya balik ke homepage lagi
-              //         );
-              //   };
+              if (isKembali) {
+                Navigator.pushReplacement(
+                  context,MaterialPageRoute(
+                            builder: (context) =>
+                                WelcomePage()), // Ini mestinya balik ke homepage lagi
+                      );
+        
+                };
               if (isSignIn) {
                 login();
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          const SignupPage(title: "PeduliLindungi2.0")),
+                          // const SignupPage(title: "PeduliLindungi2.0")),
+                          MyHomePage()),
                 );
               }
             },
