@@ -2,6 +2,10 @@ library daftar_vaksin;
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:provider/provider.dart';
+import 'package:pedulilindungi2_mobile_app/common/cookie_request.dart';
 
 void main() {
   runApp(const DaftarVaksin());
@@ -49,6 +53,24 @@ class _DaftarVaksinState extends State<DaftarVaksinState> {
     print("Tempat: " + _tempatChoose);
   }
 
+  Future<String> postData(CookieRequest request) async {
+    request.isBiodata = true;
+    final response = await http.post(
+        Uri.parse("http://127.0.0.1:8000/daftar-vaksin/flutter"),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(<String, String>{
+          'kota': _kotaChoose,
+          'tanggal': _tanggalChoose,
+          'jenisVaksin': _jenisVaksinChoose,
+          'tempat': _tempatChoose,
+          'username': request.username
+        }));
+
+    Map<String, dynamic> extractedData = jsonDecode(response.body);
+    return extractedData["msg"];
+  }
 
   @override
   Widget build(BuildContext context) {
