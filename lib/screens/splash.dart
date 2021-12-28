@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:pedulilindungi2_mobile_app/screens/after_login.dart';
 import 'package:pedulilindungi2_mobile_app/screens/before_login.dart';
 
 

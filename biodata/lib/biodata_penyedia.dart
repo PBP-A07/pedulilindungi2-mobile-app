@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:provider/provider.dart';
 import 'package:pedulilindungi2_mobile_app/common/cookie_request.dart';
+import 'package:pedulilindungi2_mobile_app/screens/after_login_penyedia.dart';
 
 class BiodataPenyedia extends StatefulWidget {
   const BiodataPenyedia({Key? key}) : super(key: key);
@@ -350,7 +351,14 @@ class BiodataPenyediaState extends State<BiodataPenyedia> {
                                                           ),
                                                           backgroundColor: Colors.black,
                                                         ),
-                                                        onPressed: () => {},
+                                                        onPressed: () => {
+                                                          Navigator.pushReplacement(
+                                                            context,
+                                                            MaterialPageRoute(
+                                                                builder: (context) =>
+                                                                    MyHomePagePenyedia()),
+                                                          )
+                                                        },
                                                         // TODO : arahin ke halaman HOME 
                                                         child: const Text(
                                                           'OK',

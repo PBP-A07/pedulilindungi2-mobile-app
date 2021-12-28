@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:provider/provider.dart';
 import 'package:pedulilindungi2_mobile_app/common/cookie_request.dart';
+import 'package:pedulilindungi2_mobile_app/screens/after_login.dart';
 // import 'package:account/screens/sign_in.dart';
 
 class BiodataPeserta extends StatefulWidget {
@@ -481,14 +482,14 @@ class BiodataPesertaState extends State<BiodataPeserta> {
                                                                           Colors
                                                                               .black,
                                                                     ),
-                                                                    onPressed:
-                                                                        () => {
-                                                                          // Navigator.pushReplacement(
-                                                                          //   context,
-                                                                          //   MaterialPageRoute(
-                                                                          //       builder: (context) => const SigninPage(title: "PeduliLindungi2.0")),
-                                                                          // )
-                                                                        },
+                                                                    onPressed: () => {
+                                                                        Navigator.pushReplacement(
+                                                                          context,
+                                                                          MaterialPageRoute(
+                                                                              builder: (context) =>
+                                                                                  MyHomePage()),
+                                                                        )
+                                                                      },
                                                                     // TODO : arahin ke halaman HOME
                                                                     child:
                                                                         const Text(

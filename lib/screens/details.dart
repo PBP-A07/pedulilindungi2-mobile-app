@@ -1,8 +1,5 @@
- 
- 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'after_login.dart';
 import 'dart:convert';
  
 class Detail extends StatefulWidget {

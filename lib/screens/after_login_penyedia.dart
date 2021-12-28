@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget { // stateless widget punya method yg namany
   @override
   Widget build(BuildContext context) { // ini yg bakal ditampilkan di layar
     return MaterialApp( // sebuah widget yg berisi data2 yg diperlukan oleh aplikasi yg menggunakan material design
-      home: MyHomePage(),
+      home: MyHomePagePenyedia(),
       debugShowCheckedModeBanner: false,
       title: 'PeduliLindungi2.0',
       theme: ThemeData(
@@ -78,7 +78,7 @@ class MainDrawer extends StatelessWidget {
  
           SizedBox(height: 20),
  
-          buildListTile('Daftar Vaksin', Icons.coronavirus, () {
+          buildListTile('Tambahkan Vaksin', Icons.coronavirus, () {
             //Navigator.of(context).pushReplacementNamed('/');
           }),
          
@@ -92,12 +92,12 @@ class MainDrawer extends StatelessWidget {
 }
  
  
-class MyHomePage extends StatefulWidget {
+class MyHomePagePenyedia extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _MyHomePageStatePenyedia createState() => _MyHomePageStatePenyedia();
 }
  
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageStatePenyedia extends State<MyHomePagePenyedia> {
  
   Future<String> postData(CookieRequest request) async {
     final response = await http.post(
@@ -291,7 +291,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  MyHomePage()),
+                                                  MyHomePagePenyedia()),
                                         );
                                                                      
                                       }

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:account/screens/sign_up.dart';
-import 'package:pedulilindungi2_mobile_app/screens/after_login.dart';
 import 'package:pedulilindungi2_mobile_app/screens/splash.dart';
 import 'package:provider/provider.dart';
 import 'common/cookie_request.dart';
