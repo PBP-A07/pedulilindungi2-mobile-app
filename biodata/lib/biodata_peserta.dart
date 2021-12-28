@@ -487,10 +487,10 @@ class BiodataPesertaState extends State<BiodataPeserta> {
                                                                           context,
                                                                           MaterialPageRoute(
                                                                               builder: (context) =>
-                                                                                  MyHomePage()),
+                                                                                  const MyHomePage()),
                                                                         )
                                                                       },
-                                                                    // TODO : arahin ke halaman HOME
+                                                                    
                                                                     child:
                                                                         const Text(
                                                                       'OK',

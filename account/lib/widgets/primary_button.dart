@@ -68,9 +68,9 @@ class CustomPrimaryButton extends StatelessWidget {
                 Navigator.pushReplacement(
                   context,MaterialPageRoute(
                             builder: (context) =>
-                                WelcomePage()), // Ini mestinya balik ke homepage lagi
+                                const WelcomePage()), // Ini mestinya balik ke homepage lagi
                       );
-                };
+                }
               if (isSignIn) {
                 await login();
                 print(request!.role);
@@ -97,19 +97,18 @@ class CustomPrimaryButton extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              MyHomePage()),
+                              const MyHomePage()),
                     );
                   } else {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              MyHomePagePenyedia()),
+                              const MyHomePagePenyedia()),
                     );
                   }
                 }
-                //   // TODO : Al handle
-                // }
+               
               }
             },
             borderRadius: BorderRadius.circular(14.0),

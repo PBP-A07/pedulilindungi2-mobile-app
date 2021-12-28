@@ -4,13 +4,14 @@ import 'package:pedulilindungi2_mobile_app/screens/before_login.dart';
 
 
 class SplashPage extends StatefulWidget {
+  const SplashPage({Key? key}) : super(key: key);
   @override
   _MySplashPage createState() => _MySplashPage();
 }
 
 Route _createRoute() {
   return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => WelcomePage(),
+    pageBuilder: (context, animation, secondaryAnimation) => const WelcomePage(),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       const begin = Offset(3.0, 0.0);
       const end = Offset.zero;
@@ -30,7 +31,7 @@ class _MySplashPage extends State<SplashPage> {
   @override
   void initState() {
 	  super.initState();
-	  Timer(Duration(seconds: 3),
+	  Timer(const Duration(seconds: 3),
 		  () => Navigator.of(context).push(_createRoute())
 		);
   }
@@ -40,7 +41,7 @@ class _MySplashPage extends State<SplashPage> {
     return Material (
       child :Container(
         color: Colors.blue,
-        child: Center(
+        child: const Center(
           child: Text(
             "Pedulilindungi2.0",
             textAlign: TextAlign.center,

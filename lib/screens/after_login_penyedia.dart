@@ -5,39 +5,10 @@ import './details.dart';
 import 'package:provider/provider.dart';
 import 'package:pedulilindungi2_mobile_app/common/cookie_request.dart';
  
-class MyApp extends StatelessWidget { // stateless widget punya method yg namanya build yg harus dioverride di class turunannya
- 
-  @override
-  Widget build(BuildContext context) { // ini yg bakal ditampilkan di layar
-    return MaterialApp( // sebuah widget yg berisi data2 yg diperlukan oleh aplikasi yg menggunakan material design
-      home: MyHomePagePenyedia(),
-      debugShowCheckedModeBanner: false,
-      title: 'PeduliLindungi2.0',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        accentColor: Colors.indigo,
-        primaryColor: Colors.white,
-        canvasColor: Color.fromRGBO(255, 254, 229, 1),
-        fontFamily: 'Raleway',
-        textTheme: ThemeData.light().textTheme.copyWith(
-          bodyText1: TextStyle(
-            color: Color.fromRGBO(20, 51, 51, 1),
-          ),
-          bodyText2: TextStyle(
-            color: Color.fromRGBO(20, 51, 51, 1),
-          ),
-          headline6: TextStyle(
-            fontSize: 20,
-            fontFamily: 'RobotoCondensed',
-            fontWeight: FontWeight.bold,
-          )
-        ),
-      ),
-    );
-  }
-}
  
 class MainDrawer extends StatelessWidget {
+  const MainDrawer({Key? key}) : super(key: key);
+
   Widget buildListTile(String title, IconData icon, Function tapHandler) {
     return ListTile(
       leading: Icon(
@@ -46,7 +17,7 @@ class MainDrawer extends StatelessWidget {
       ),
       title: Text(
         title,
-        style: TextStyle(
+        style: const TextStyle(
           fontFamily: 'RobotoCondensed',
           fontSize: 18,
           fontWeight: FontWeight.bold,
@@ -64,7 +35,7 @@ class MainDrawer extends StatelessWidget {
           Container(
             height: 120,
             width: double.infinity,
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             alignment: Alignment.centerLeft,
             color: Colors.lightBlue,
             child: Text(
@@ -76,7 +47,7 @@ class MainDrawer extends StatelessWidget {
             ),
           ),
  
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
  
           buildListTile('Tambahkan Vaksin', Icons.coronavirus, () {
             //Navigator.of(context).pushReplacementNamed('/');
@@ -93,6 +64,7 @@ class MainDrawer extends StatelessWidget {
  
  
 class MyHomePagePenyedia extends StatefulWidget {
+  const MyHomePagePenyedia({Key? key}) : super(key: key);
   @override
   _MyHomePageStatePenyedia createState() => _MyHomePageStatePenyedia();
 }
@@ -120,7 +92,7 @@ class _MyHomePageStatePenyedia extends State<MyHomePagePenyedia> {
     const url2 = 'http://127.0.0.1:8000/json-account';
  
     try {
-      Map<String, dynamic> extractedData = new Map();
+      Map<String, dynamic> extractedData = {};
  
       final response = await http.get(Uri.parse(url));
       extractedData['forums'] = jsonDecode(response.body);
@@ -132,7 +104,7 @@ class _MyHomePageStatePenyedia extends State<MyHomePagePenyedia> {
     }
  
     catch (error) {
-      print(error);
+      // print(error);
       return {"Error" : "Sorry"};
     }
   }
@@ -161,18 +133,18 @@ class _MyHomePageStatePenyedia extends State<MyHomePagePenyedia> {
     final request = context.watch<CookieRequest>();
     return Scaffold(
       appBar: AppBar(),
-      drawer: MainDrawer(),
+      drawer: const MainDrawer(),
       backgroundColor: Colors.lightBlue,
       body: ListView(
         children: <Widget>[
-          SizedBox(height: 40.0),
+          const SizedBox(height: 40.0),
  
           // WELCOME PAGE
           Padding (
-            padding: EdgeInsets.only(left: 30.0),
+            padding: const EdgeInsets.only(left: 30.0),
             child: Column (
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget> [
+              children: const <Widget> [
                 Text("Selamat datang di",
                   style: TextStyle(
                   fontFamily: "Montserrat",
@@ -193,23 +165,23 @@ class _MyHomePageStatePenyedia extends State<MyHomePagePenyedia> {
             )
           ),
  
-          SizedBox(height:40.0),
+          const SizedBox(height:40.0),
      
           Container(
             height: MediaQuery.of(context).size.height - 100,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(topLeft: Radius.circular(75.0)),
             ),
             child: ListView(
               primary: false,
-              padding: EdgeInsets.only(left:40.0, right:25.0),
+              padding: const EdgeInsets.only(left:40.0, right:25.0),
               children: <Widget>[
-                SizedBox(height:50.0),
+                const SizedBox(height:50.0),
                 Row (
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget> [
-                    Text("Forum",
+                    const Text("Forum",
                       style: TextStyle(
                       fontFamily: "Montserrat",
                       fontSize: 18.0,
@@ -217,7 +189,7 @@ class _MyHomePageStatePenyedia extends State<MyHomePagePenyedia> {
                       )
                     ),
                     IconButton(
-                      icon: Icon(Icons.add_circle),
+                      icon: const Icon(Icons.add_circle),
                       onPressed:() {},
                       color: Colors.lightBlue,
                     ),
@@ -226,38 +198,38 @@ class _MyHomePageStatePenyedia extends State<MyHomePagePenyedia> {
  
                 // FORUM PAGE
                 Padding (
-                  padding: EdgeInsets.only(top: .0),
-                  child: Container(
+                  padding: const EdgeInsets.only(top: .0),
+                  child: SizedBox(
                     height: MediaQuery.of(context).size.height - 250.0,
-                    child: Container(
+                    // child: Container(
                       child: ListView(
                         children: [
                           Form(
                             key: _formKey,
                             child: Container(
-                              padding: EdgeInsets.all(20.0),
+                              padding: const EdgeInsets.all(20.0),
                               child: Column(
                                 children: [
  
                                   TextFormField(
-                                    decoration: new InputDecoration(
+                                    decoration: InputDecoration(
                                       hintText: "Masukkan judul forum",
                                       labelText: "Judul Forum",
-                                      icon: Icon(Icons.question_answer_outlined),
+                                      icon: const Icon(Icons.question_answer_outlined),
                                       border: OutlineInputBorder(
-                                      borderRadius: new BorderRadius.circular(5.0)),
+                                      borderRadius: BorderRadius.circular(5.0)),
                                     ),
                                     validator: (value) {
                                       if (value!.isEmpty) {
                                         return 'Judul tidak boleh kosong';
                                       }
-                                      judul = "$value";
+                                      judul = value;
                                       return null;
                                     },
                                   ),
  
                                   TextFormField(
-                                    decoration: new InputDecoration(
+                                    decoration: const InputDecoration(
                                       hintText: "Masukkan pertanyaan Anda",
                                       labelText: "Pertanyaan",
                                     ),
@@ -266,32 +238,41 @@ class _MyHomePageStatePenyedia extends State<MyHomePagePenyedia> {
                                       if (value!.isEmpty) {
                                         return 'Pertanyaan tidak boleh kosong';
                                       }
-                                      pertanyaan = "$value";
+                                      pertanyaan = value;
                                       return null;
                                     },
                                   ),
  
-                                  SizedBox(height:25.0),
+                                  const SizedBox(height:25.0),
                                  
-                                  RaisedButton(
-                                    child: Text(
-                                      "Kirim",
-                                      style: TextStyle(color: Colors.white),
+                                  ElevatedButton(
+                                    child: Ink(
+                                      decoration:  BoxDecoration(
+                                        borderRadius: BorderRadius.circular(60),
+                                        // gradient:  LinearGradient(
+                                        //   colors: <Color>[Colors.blue.shade600, Colors.deepPurple.shade300,],
+                                        //   begin: Alignment.topLeft,
+                                        //   end: Alignment.bottomRight,
+                                        // ),
+                                      ),
+                                      padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 7),
+                                      child: const Text("Kirim", style: TextStyle(
+                                        color: Colors.white,
+                                      )),
                                     ),
-                                    color: Colors.blue,
                                     onPressed: () {
                                       if (_formKey.currentState!.validate()) {
-                                        print("Pertanyaan telah terkirim");
-                                        print("Berikut merupakan forum baru yang Anda buat: ");
-                                        print("Judul Forum : $judul");
-                                        print("Pertanyaan  : $pertanyaan");
+                                        // print("Pertanyaan telah terkirim");
+                                        // print("Berikut merupakan forum baru yang Anda buat: ");
+                                        // print("Judul Forum : $judul");
+                                        // print("Pertanyaan  : $pertanyaan");
                                         postData(request);
                                 
                                         Navigator.pushReplacement(
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  MyHomePagePenyedia()),
+                                                  const MyHomePagePenyedia()),
                                         );
                                                                      
                                       }
@@ -305,24 +286,25 @@ class _MyHomePageStatePenyedia extends State<MyHomePagePenyedia> {
                             ),
                           ),
  
-                          SizedBox(height:30.0),
+                          const SizedBox(height:30.0),
  
-                          new FutureBuilder(
+                          FutureBuilder(
                             future: fetchData(),
                             builder: (context, snapshot) {
-                              if (snapshot.hasError) print(snapshot.error);
+                              if (snapshot.hasError) {}
+                              // print(snapshot.error);
                               return snapshot.hasData
-                                ? new ItemList(
+                                ? ItemList(
                                   list: snapshot.data as Map,
                                 )
-                                : new Center(
-                                  child: new CircularProgressIndicator(),
+                                : const Center(
+                                  child: CircularProgressIndicator(),
                                 );
                             },
                           )
                         ]
                       )  
-                    )
+                    // )
                   )
                 )
               ]
@@ -339,9 +321,10 @@ class _MyHomePageStatePenyedia extends State<MyHomePagePenyedia> {
 class ItemList extends StatelessWidget {
   final Map list;
  
-  ItemList ({
-    required this.list,
-  });
+  const ItemList({Key? key, required this.list}) : super(key: key);
+  // ItemList ({
+  //   required this.list,
+  // });
  
   String getAuthor(pk) {
     for (var auth in list['accounts']) {
@@ -355,25 +338,25 @@ class ItemList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     
-    return Container(
+    return SizedBox(
       height: 300,
       child:ListView.builder(
-        itemCount: list == null ? 0 : list['forums'].length,
+        itemCount: list['forums'].length,
         itemBuilder: (context, i) {
  
           String a = getAuthor(list['forums'][i]['fields']['author']);
           String time = list['forums'][i]['fields']['created_at'];
          
-          return new Container(
+          return Container(
             padding: const EdgeInsets.all(2.0),
-            child: new Card(
+            child: Card(
               child: Padding(
-                padding: EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10.0),
                 child: InkWell(
                   splashColor: Colors.blue.withAlpha(30),
                   onTap: () => Navigator.of(context).push(
-                    new MaterialPageRoute(
-                      builder: (BuildContext context)=> new Detail(index: i, list: list['forums'])
+                    MaterialPageRoute(
+                      builder: (BuildContext context)=> Detail(index: i, list: list['forums'])
                     )
                   ),
                   child: Column (
@@ -382,30 +365,30 @@ class ItemList extends StatelessWidget {
                       Row(
                         children: <Widget> [
                           Column(
-                            children: [
+                            children: const [
                               Icon(Icons.message),
                             ],
                           ),
-                          SizedBox(width: 10,),
+                          const SizedBox(width: 10,),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              SizedBox(height: 10,),
+                              const SizedBox(height: 10,),
                               Text(list['forums'][i]['fields']['title'],
-                                style: TextStyle(
+                                style: const  TextStyle(
                                     fontFamily: "Montserrat",
                                     fontSize: 14.0,
                                     fontWeight: FontWeight.bold,
                                 )
                               ),
-                              Text("dibuat oleh ${a} pada ${time.substring(0, 10)}",
-                                  style: TextStyle(
+                              Text("dibuat oleh "+ a+" pada "+ time.substring(0, 10),
+                                  style: const TextStyle(
                                       fontFamily: "Montserrat",
                                       fontSize: 11.0,
                                   )
                               ),
                               Text("pukul ${time.substring(11, 19)}",
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontFamily: "Montserrat",
                                       fontSize: 11.0,
                                   )
@@ -414,7 +397,7 @@ class ItemList extends StatelessWidget {
                           )
                         ],
                       ),
-                      SizedBox(height:10),
+                      const SizedBox(height:10),
                       Text(list['forums'][i]['fields']['body']),
                     ]
                   )
