@@ -1,0 +1,97 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "pedulilindungi2-mobile-app",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "pedulilindungi2-mobile-app (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "account",
+            "cwd": "account",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "account (profile mode)",
+            "cwd": "account",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "biodata",
+            "cwd": "biodata",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "biodata (profile mode)",
+            "cwd": "biodata",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "daftar_vaksin",
+            "cwd": "daftar_vaksin",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "daftar_vaksin (profile mode)",
+            "cwd": "daftar_vaksin",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "profil_penerima",
+            "cwd": "profil_penerima",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "profil_penerima (profile mode)",
+            "cwd": "profil_penerima",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "profil_penyedia",
+            "cwd": "profil_penyedia",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "profil_penyedia (profile mode)",
+            "cwd": "profil_penyedia",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "tambah_vaksin",
+            "cwd": "tambah_vaksin",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "tambah_vaksin (profile mode)",
+            "cwd": "tambah_vaksin",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        }
+    ]
+}
