@@ -17,6 +17,7 @@ class CookieRequest {
   String username = "";
   String email = "";
   String role = "";
+  bool isBiodata = false;
 
   Future init(BuildContext context) async {
     if (!initialized) {

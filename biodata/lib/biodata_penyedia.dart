@@ -4,6 +4,8 @@ library biodata;
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:provider/provider.dart';
+import 'package:pedulilindungi2_mobile_app/common/cookie_request.dart';
 
 class BiodataPenyedia extends StatefulWidget {
   const BiodataPenyedia({Key? key}) : super(key: key);
@@ -28,9 +30,10 @@ class BiodataPenyediaState extends State<BiodataPenyedia> {
     print("Alamat: " + alamat);
   }
 
-  Future<String> postData() async {
+  Future<String> postData(CookieRequest request) async {
+    request.isBiodata = true;
     final response = await http.post(
-        Uri.parse("https://pedulilindungi2.herokuapp.com/biodata/penyedia/flutter"),
+        Uri.parse("http://127.0.0.1:8000/biodata/penyedia/flutter"),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
@@ -39,6 +42,7 @@ class BiodataPenyediaState extends State<BiodataPenyedia> {
           'kota': kota,
           'nomorTelepon': nomorTelepon,
           'alamat': alamat,
+          'username': request.username
         }));
 
     Map<String, dynamic> extractedData = jsonDecode(response.body);
@@ -48,7 +52,9 @@ class BiodataPenyediaState extends State<BiodataPenyedia> {
   @override
   Widget build(BuildContext context) {
     // Build a Form widget using the _formKey created above.
-    return Form(
+    final request = context.watch<CookieRequest>();
+    return Scaffold(
+      body:  Form(
       key: _formKey,
       child: ListView(
         // padding: const EdgeInsets.only(left: 25, right: 35),
@@ -262,7 +268,7 @@ class BiodataPenyediaState extends State<BiodataPenyedia> {
                                                   BorderRadius.circular(
                                                       20)),
                                           backgroundColor:
-                                              const Color(0xEA068F1C),
+                                              const Color(0xFFFF0000),
                                         ),
                                         onPressed: () =>
                                             Navigator.pop(context, 'No'),
@@ -287,11 +293,11 @@ class BiodataPenyediaState extends State<BiodataPenyedia> {
                                           borderRadius:
                                               BorderRadius.circular(20)),
                                       backgroundColor:
-                                          const Color(0xFFFF0000),
+                                          const Color(0xEA068F1C),
                                     ),
                                     // sources https://docs.flutter.dev/cookbook/navigation/navigation-basics
                                     onPressed: () async {
-                                      String message = await postData();
+                                      String message = await postData(request);
                                       
                                       showDialog<String>(
                                         context: context,
@@ -386,7 +392,8 @@ class BiodataPenyediaState extends State<BiodataPenyedia> {
                           fontWeight: FontWeight.bold)),
                 ),
               ))
-        ],
+          ],
+        ),
       ),
     );
   }

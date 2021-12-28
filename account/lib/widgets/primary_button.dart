@@ -1,6 +1,10 @@
+// ignore_for_file: avoid_print
+
 import 'package:account/screens/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:pedulilindungi2_mobile_app/common/cookie_request.dart';
+import 'package:biodata/biodata_peserta.dart';
+import 'package:biodata/biodata_penyedia.dart';
 
 import '../theme.dart';
 // import 'package:studi_kasus/theme.dart';
@@ -57,7 +61,7 @@ class CustomPrimaryButton extends StatelessWidget {
         child: Material(
           color: Colors.transparent,
           child: InkWell(
-            onTap: () {
+            onTap: () async {
               // if (isKembali) {
               //   Navigator.pushReplacement(
               //     context,MaterialPageRoute(
@@ -66,13 +70,42 @@ class CustomPrimaryButton extends StatelessWidget {
               //         );
               //   };
               if (isSignIn) {
-                login();
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          const SignupPage(title: "PeduliLindungi2.0")),
-                );
+                await login();
+                print(request!.role);
+                if (!request!.isBiodata) {
+                  if (request!.role == "penerima") {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const BiodataPeserta()),
+                    );
+                  } else {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const BiodataPenyedia()),
+                    );
+                  }
+                } else {
+                  print(request!.isBiodata);
+                  // if(request!.role == "peserta") {
+                  //   Navigator.pushReplacement(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //         builder: (context) =>
+                  //             const BiodataPeserta()),
+                  //   );
+                  // } else {
+                  //   Navigator.pushReplacement(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //         builder: (context) =>
+                  //             const BiodataPenyedia()),
+                  //   );
+                  // }
+                }
+                //   // TODO : Al handle
+                // }
               }
             },
             borderRadius: BorderRadius.circular(14.0),
