@@ -111,7 +111,6 @@ class BiodataPenyediaState extends State<BiodataPenyedia> {
               borderRadius: BorderRadius.circular(15),
             ),
             child: TextFormField(
-                keyboardType: TextInputType.number,
                 decoration: const InputDecoration(
                     errorStyle:
                         TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
