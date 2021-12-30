@@ -6,6 +6,7 @@ import 'dart:convert';
 
 import 'package:provider/provider.dart';
 import 'package:pedulilindungi2_mobile_app/common/cookie_request.dart';
+import 'package:pedulilindungi2_mobile_app/screens/after_login_penyedia.dart';
 
 import 'lihat_catatan_penyedia.dart';
 import 'lihat_pendaftar.dart';
@@ -188,8 +189,13 @@ class ProfilPenyediaState extends State<ProfilPenyedia> {
                       margin: const EdgeInsets.only(top: 10, bottom: 10),
                       child: ElevatedButton.icon(
                         icon: const Icon(Icons.home_rounded),
-                        onPressed: () {
-                          Navigator.pop(context);
+                        onPressed: () async {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const MyHomePagePenyedia()),
+                          );
                         },
                         label: const Text("Kembali"),
                         style: ElevatedButton.styleFrom(
