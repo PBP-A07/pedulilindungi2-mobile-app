@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:pedulilindungi2_mobile_app/common/cookie_request.dart';
 import 'package:biodata/biodata_peserta.dart';
 import 'package:biodata/biodata_penyedia.dart';
+import 'package:pedulilindungi2_mobile_app/screens/after_login.dart';
+import 'package:pedulilindungi2_mobile_app/screens/after_login_penyedia.dart';
+import 'package:pedulilindungi2_mobile_app/screens/before_login.dart';
 
 import '../theme.dart';
 // import 'package:studi_kasus/theme.dart';
@@ -61,16 +64,17 @@ class CustomPrimaryButton extends StatelessWidget {
           color: Colors.transparent,
           child: InkWell(
             onTap: () async {
-              // if (isKembali) {
-              //   Navigator.pushReplacement(
-              //     context,MaterialPageRoute(
-              //               builder: (context) =>
-              //                   const (title: "PeduliLindungi2.0")), // Ini mestinya balik ke homepage lagi
-              //         );
-              //   };
+              if (isKembali) {
+                Navigator.pushReplacement(
+                  context,MaterialPageRoute(
+                            builder: (context) =>
+                                const WelcomePage()), // Ini mestinya balik ke homepage lagi
+                      );
+                }
               if (isSignIn) {
                 await login();
                 print(request!.role);
+                
                 if (!request!.isBiodata) {
                   if (request!.role == "penerima") {
                     Navigator.pushReplacement(
@@ -85,26 +89,26 @@ class CustomPrimaryButton extends StatelessWidget {
                           builder: (context) => const BiodataPenyedia()),
                     );
                   }
-                } else {
+                } 
+                else {
                   print(request!.isBiodata);
-                  // if(request!.role == "peserta") {
-                  //   Navigator.pushReplacement(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         builder: (context) =>
-                  //             const BiodataPeserta()),
-                  //   );
-                  // } else {
-                  //   Navigator.pushReplacement(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         builder: (context) =>
-                  //             const BiodataPenyedia()),
-                  //   );
-                  // }
+                  if(request!.role == "penerima") {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              const MyHomePage()),
+                    );
+                  } else {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              const MyHomePagePenyedia()),
+                    );
+                  }
                 }
-                //   // TODO : Al handle
-                // }
+               
               }
             },
             borderRadius: BorderRadius.circular(14.0),
