@@ -43,8 +43,8 @@ class ProfilPenyediaState extends State<ProfilPenyedia> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title:
-            Title(color: Colors.blueAccent, child: Text("PeduliLindungi2.0")),
+        title: Title(
+            color: Colors.blueAccent, child: const Text("PeduliLindungi2.0")),
       ),
       body: FutureBuilder<Map<String, dynamic>>(
           future: profilPenyediaData,
@@ -56,7 +56,7 @@ class ProfilPenyediaState extends State<ProfilPenyedia> {
                   children: [
                     Container(
                       margin: const EdgeInsets.all(20),
-                      child: Text(
+                      child: const Text(
                         "PROFIL PENYEDIA",
                         style: TextStyle(
                             fontSize: 25, fontWeight: FontWeight.bold),
@@ -64,7 +64,7 @@ class ProfilPenyediaState extends State<ProfilPenyedia> {
                     ),
                     Container(
                       margin: const EdgeInsets.only(top: 10, bottom: 5),
-                      child: Text(
+                      child: const Text(
                         "Nama Instansi",
                         style: TextStyle(
                             fontSize: 15, fontWeight: FontWeight.bold),
@@ -74,13 +74,13 @@ class ProfilPenyediaState extends State<ProfilPenyedia> {
                       margin: const EdgeInsets.only(top: 5, bottom: 10),
                       child: Text(
                         snapshot.data!['fields']['namaInstansi'].toString(),
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 15, fontWeight: FontWeight.normal),
                       ),
                     ),
                     Container(
                       margin: const EdgeInsets.only(top: 10, bottom: 5),
-                      child: Text(
+                      child: const Text(
                         "Kota",
                         style: TextStyle(
                             fontSize: 15, fontWeight: FontWeight.bold),
@@ -90,13 +90,13 @@ class ProfilPenyediaState extends State<ProfilPenyedia> {
                       margin: const EdgeInsets.only(top: 5, bottom: 10),
                       child: Text(
                         snapshot.data!['fields']['kota'].toString(),
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 15, fontWeight: FontWeight.normal),
                       ),
                     ),
                     Container(
                       margin: const EdgeInsets.only(top: 10, bottom: 5),
-                      child: Text(
+                      child: const Text(
                         "Nomor Telepon",
                         style: TextStyle(
                             fontSize: 15, fontWeight: FontWeight.bold),
@@ -106,13 +106,13 @@ class ProfilPenyediaState extends State<ProfilPenyedia> {
                       margin: const EdgeInsets.only(top: 5, bottom: 10),
                       child: Text(
                         snapshot.data!['fields']['nomorTelepon'].toString(),
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 15, fontWeight: FontWeight.normal),
                       ),
                     ),
                     Container(
                       margin: const EdgeInsets.only(top: 10, bottom: 5),
-                      child: Text(
+                      child: const Text(
                         "Alamat",
                         style: TextStyle(
                             fontSize: 15, fontWeight: FontWeight.bold),
@@ -122,7 +122,7 @@ class ProfilPenyediaState extends State<ProfilPenyedia> {
                       margin: const EdgeInsets.only(top: 5, bottom: 20),
                       child: Text(
                         snapshot.data!['fields']['alamat'].toString(),
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 15, fontWeight: FontWeight.normal),
                       ),
                     ),

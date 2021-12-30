@@ -37,11 +37,11 @@ class LihatPendaftarState extends State<LihatPendaftar> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title:
-            Title(color: Colors.blueAccent, child: Text("PeduliLindungi2.0")),
+        title: Title(
+            color: Colors.blueAccent, child: const Text("PeduliLindungi2.0")),
       ),
       body: Center(
-        child: Container(
+        child: SizedBox(
           width: MediaQuery.of(context).size.width * 0.85,
           child: SingleChildScrollView(
             child: Column(
@@ -62,7 +62,7 @@ class LihatPendaftarState extends State<LihatPendaftar> {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    label: Text("Kembali"),
+                    label: const Text("Kembali"),
                     style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15)),
@@ -93,7 +93,7 @@ class LihatPendaftarState extends State<LihatPendaftar> {
                                       child: Text(
                                           snapshot.data![index]['nama']
                                               .toString(),
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontSize: 15,
                                               fontWeight: FontWeight.bold)),
                                     ),
@@ -104,7 +104,7 @@ class LihatPendaftarState extends State<LihatPendaftar> {
                                       child: Text(
                                           snapshot.data![index]['nik']
                                               .toString(),
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontSize: 15,
                                               fontWeight: FontWeight.normal)),
                                     ),
@@ -116,7 +116,7 @@ class LihatPendaftarState extends State<LihatPendaftar> {
                                           snapshot.data![index]
                                                   ['nomor_handphone']
                                               .toString(),
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontSize: 15,
                                               fontWeight: FontWeight.normal)),
                                     ),
@@ -127,7 +127,7 @@ class LihatPendaftarState extends State<LihatPendaftar> {
                                       child: Text(
                                           snapshot.data![index]['jenis_vaksin']
                                               .toString(),
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontSize: 15,
                                               fontWeight: FontWeight.normal)),
                                     ),
@@ -139,7 +139,7 @@ class LihatPendaftarState extends State<LihatPendaftar> {
                                       child: Text(
                                           snapshot.data![index]['tanggal']
                                               .toString(),
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontSize: 15,
                                               fontWeight: FontWeight.normal)),
                                     ),

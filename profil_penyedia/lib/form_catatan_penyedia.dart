@@ -45,8 +45,8 @@ class FormCatatanPenyediaState extends State<FormCatatanPenyedia> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title:
-            Title(color: Colors.blueAccent, child: Text("PeduliLindungi2.0")),
+        title: Title(
+            color: Colors.blueAccent, child: const Text("PeduliLindungi2.0")),
       ),
       body: Form(
           key: _formKey,
@@ -54,8 +54,8 @@ class FormCatatanPenyediaState extends State<FormCatatanPenyedia> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
-                  margin: EdgeInsets.all(20),
-                  child: Text(
+                  margin: const EdgeInsets.all(20),
+                  child: const Text(
                     "TAMBAH CATATAN PENYEDIA",
                     style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                   )),
@@ -131,8 +131,7 @@ class FormCatatanPenyediaState extends State<FormCatatanPenyedia> {
                     label: const Text("Tambah"),
                     onPressed: () async {
                       if (_formKey.currentState!.validate()) {
-                        String notification =
-                            await postFormCatatanPenyediaValue(request);
+                        await postFormCatatanPenyediaValue(request);
                         Navigator.push(
                           context,
                           MaterialPageRoute(

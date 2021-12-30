@@ -41,11 +41,11 @@ class LihatCatatanPenyediaState extends State<LihatCatatanPenyedia> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title:
-            Title(color: Colors.blueAccent, child: Text("PeduliLindungi2.0")),
+        title: Title(
+            color: Colors.blueAccent, child: const Text("PeduliLindungi2.0")),
       ),
       body: Center(
-        child: Container(
+        child: SizedBox(
           width: MediaQuery.of(context).size.width * 0.85,
           child: SingleChildScrollView(
             child: Column(
@@ -122,7 +122,7 @@ class LihatCatatanPenyediaState extends State<LihatCatatanPenyedia> {
                                           snapshot.data![index]['fields']
                                                   ['title']
                                               .toString(),
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontSize: 15,
                                               fontWeight: FontWeight.bold)),
                                     ),
@@ -135,7 +135,7 @@ class LihatCatatanPenyediaState extends State<LihatCatatanPenyedia> {
                                           snapshot.data![index]['fields']
                                                   ['message']
                                               .toString(),
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontSize: 15,
                                               fontWeight: FontWeight.normal)),
                                     ),

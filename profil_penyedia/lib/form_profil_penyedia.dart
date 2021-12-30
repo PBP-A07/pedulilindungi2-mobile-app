@@ -69,8 +69,8 @@ class FormProfilPenyediaState extends State<FormProfilPenyedia> {
     return Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          title:
-              Title(color: Colors.blueAccent, child: Text("PeduliLindungi2.0")),
+          title: Title(
+              color: Colors.blueAccent, child: const Text("PeduliLindungi2.0")),
         ),
         body: FutureBuilder<Map<String, dynamic>>(
           future: profilPenyediaData,
@@ -82,8 +82,8 @@ class FormProfilPenyediaState extends State<FormProfilPenyedia> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Container(
-                        margin: EdgeInsets.all(20),
-                        child: Text(
+                        margin: const EdgeInsets.all(20),
+                        child: const Text(
                           "UBAH PROFIL PENYEDIA",
                           style: TextStyle(
                               fontSize: 25, fontWeight: FontWeight.bold),
@@ -244,8 +244,7 @@ class FormProfilPenyediaState extends State<FormProfilPenyedia> {
                               alamat =
                                   snapshot.data!['fields']['alamat'].toString();
                             }
-                            String notification =
-                                await postUpdateProfilPenyediaValue(request);
+                            await postUpdateProfilPenyediaValue(request);
                             Navigator.push(
                               context,
                               MaterialPageRoute(
