@@ -1,6 +1,7 @@
 name: profil_penyedia
 description: A new Flutter package project.
 version: 0.0.1
+publish_to: "none"
 homepage:
 
 environment:
@@ -11,6 +12,10 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^0.13.4
+  provider: ^6.0.2
+  pedulilindungi2_mobile_app:
+    path: ../.
+  shared_preferences: ^2.0.11
 
 dev_dependencies:
   flutter_test:
