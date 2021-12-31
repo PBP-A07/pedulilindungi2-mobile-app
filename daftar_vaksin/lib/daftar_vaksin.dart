@@ -1,52 +1,27 @@
 library daftar_vaksin;
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
-import 'package:pedulilindungi2_mobile_app/screens/after_login.dart';
 import 'dart:convert';
+import 'package:pedulilindungi2_mobile_app/screens/after_login.dart';
 import 'package:provider/provider.dart';
 import 'package:pedulilindungi2_mobile_app/common/cookie_request.dart';
 
-void main() {
-  runApp(const DaftarVaksin());
-}
+class DaftarVaksin extends StatefulWidget {
 
-class DaftarVaksin extends StatelessWidget {
   const DaftarVaksin({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Pedulilindungi2.0',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        textTheme: GoogleFonts.rubikTextTheme(
-          Theme.of(context).textTheme,
-        ),
-      ),
-      home: const DaftarVaksinState(title: 'DAFTAR VAKSIN'),
-    );
-  }
+  State<DaftarVaksin> createState() => _DaftarVaksinState();
 }
 
-
-class DaftarVaksinState extends StatefulWidget {
-
-  const DaftarVaksinState({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  State<DaftarVaksinState> createState() => _DaftarVaksinState();
-}
-
-class _DaftarVaksinState extends State<DaftarVaksinState> {
+class _DaftarVaksinState extends State<DaftarVaksin> {
   String _kotaChoose = "Kota";
   String _tanggalChoose = "Tanggal";
   String _jenisVaksinChoose = "Jenis Vaksin";
   String _tempatChoose = "Tempat";
   Map data = {};
+
 
   // void printPilihan(){
   //   print("Kota: " + _kotaChoose);
@@ -99,9 +74,6 @@ class _DaftarVaksinState extends State<DaftarVaksinState> {
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
