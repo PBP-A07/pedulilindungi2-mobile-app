@@ -14,7 +14,8 @@ class TambahVaksin extends StatefulWidget {
 
 class _TambahVaksinState extends State<TambahVaksin> {
   final _formKey = GlobalKey<FormState>();
-
+  String namaVaksin = '';
+  String jumlah = '';
   double nilaiSlider = 1;
   bool nilaiCheckBox = false;
   bool nilaiSwitch = true;
