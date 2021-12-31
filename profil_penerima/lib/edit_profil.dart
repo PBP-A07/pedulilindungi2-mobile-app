@@ -167,9 +167,9 @@ class _ProfileFormState extends State<ProfileForm> {
                       return null;
                     },
                     onChanged: (String? value) {
-                      // setState(() {
+                      setState(() {
                         nik = value!;
-                      // });
+                       });
                     },
                   ),
                 ),
@@ -196,9 +196,9 @@ class _ProfileFormState extends State<ProfileForm> {
                     return null;
                   },
                     onChanged: (String? value) {
-                      // setState(() {
+                      setState(() {
                         nama = value!;
-                      // });
+                      });
                     },
                   ),
                 ),
@@ -220,9 +220,9 @@ class _ProfileFormState extends State<ProfileForm> {
                         value: gender,
                         onChanged: (String? value) {
                           if (!disabledItems.contains(value)) {
-                            // setState(() {
+                            setState(() {
                               gender = value!;
-                            // });
+                            });
                           }
                         },
                         items: items
@@ -265,9 +265,9 @@ class _ProfileFormState extends State<ProfileForm> {
                       return null;
                     },
                     onChanged: (String? value) {
-                      // setState(() {
+                      setState(() {
                         nomorHP = value!;
-                      // });
+                      });
                     },
                   ),
                 ),
@@ -288,9 +288,9 @@ class _ProfileFormState extends State<ProfileForm> {
                       return null;
                     },
                     onChanged: (String? value) {
-                      // setState(() {
+                      setState(() {
                         alamat = value!;
-                      // });
+                      });
                     },
                   ),
                 ),
@@ -306,9 +306,9 @@ class _ProfileFormState extends State<ProfileForm> {
                         firstDate: DateTime(1900),
                         lastDate: DateTime(2100));
                     if (picked != null && picked != selectedDate) {
-                      // setState(() {
+                      setState(() {
                         selectedDate = picked;
-                      // });
+                      });
                     }
                     dateCtl.text = selectedDate.toString().substring(0, 10);
                     // method toIso8601String
