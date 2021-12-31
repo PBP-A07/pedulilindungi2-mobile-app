@@ -39,12 +39,7 @@ class MainDrawer extends StatelessWidget {
             padding: const EdgeInsets.all(20),
             alignment: Alignment.centerLeft,
             color: Colors.lightBlue,
-            child: TextButton(onPressed: () {Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const MainProfilePenerima()),
-                                        );}, 
+            child: TextButton(onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) =>const MainProfilePenerima()),);}, 
             child: const Text(
               'Profil',
               style: TextStyle(
@@ -59,7 +54,7 @@ class MainDrawer extends StatelessWidget {
           const SizedBox(height: 20),
  
           buildListTile('Daftar Vaksin', Icons.coronavirus, () {
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const DaftarVaksin()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const DaftarVaksin()));
           }),
          
           buildListTile('Log Out', Icons.logout, () {
@@ -271,13 +266,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                     ),
                                     onPressed: () {
                                       if (_formKey.currentState!.validate()) {
-                                        // print("Pertanyaan telah terkirim");
-                                        // print("Berikut merupakan forum baru yang Anda buat: ");
-                                        // print("Judul Forum : $judul");
-                                        // print("Pertanyaan  : $pertanyaan");
                                         postData(request);
                                 
-                                        Navigator.pushReplacement(
+                                        Navigator.push(
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
