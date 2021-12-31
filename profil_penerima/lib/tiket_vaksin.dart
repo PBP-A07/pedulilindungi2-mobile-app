@@ -3,8 +3,6 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:provider/provider.dart';
 import 'package:pedulilindungi2_mobile_app/common/cookie_request.dart';
-import 'package:pedulilindungi2_mobile_app/screens/after_login.dart';
-import '../edit_profil.dart';
 import '../profil_penerima.dart';
 
 class MainTiketVaksin extends StatefulWidget {

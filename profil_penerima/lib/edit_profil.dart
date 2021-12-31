@@ -76,14 +76,14 @@ class _ProfileFormState extends State<ProfileForm> {
   }
 
 
-  void printHasil() {
-      print("Nama Peserta: " + nama);
-      print("NIK: " + nik);
-      print("Nomor HP: " + nomorHP);
-      print("Tanggal Lahir: " + selectedDate.toString());
-      print("Gender: " + gender);
-      print("Alamat: " + alamat);
-    }
+  // void printHasil() {
+  //     print("Nama Peserta: " + nama);
+  //     print("NIK: " + nik);
+  //     print("Nomor HP: " + nomorHP);
+  //     print("Tanggal Lahir: " + selectedDate.toString());
+  //     print("Gender: " + gender);
+  //     print("Alamat: " + alamat);
+  //   }
 
   Future<Map<String, dynamic>> fetchData(CookieRequest request) async {
     
@@ -124,7 +124,7 @@ class _ProfileFormState extends State<ProfileForm> {
         }));
 
     Map<String, dynamic> extractedData = jsonDecode(response.body);
-    print(extractedData);
+    // print(extractedData);
     return extractedData["msg"];
   }
 
@@ -339,7 +339,7 @@ class _ProfileFormState extends State<ProfileForm> {
                   ),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      printHasil();
+                      // printHasil();
                       postData(request);
                       Navigator.pushReplacement(
                         context,

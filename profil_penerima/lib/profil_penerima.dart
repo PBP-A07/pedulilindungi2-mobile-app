@@ -164,7 +164,7 @@ class ProfilPenerima extends State<MainProfilePenerima> {
                       ),
                 label: const Text("Logout", style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),),
                 onPressed: () {
-                   print('Console Message Using Print');
+                   // print('Console Message Using Print');
                 },
                 style: ElevatedButton.styleFrom(
                   primary: Colors.red,
