@@ -20,7 +20,7 @@ class ProfilPenerima extends State<MainProfilePenerima> {
   Future<Map<String, dynamic>> fetchData(CookieRequest request) async {
     
     String usn = request.username;
-    String url = 'http://10.0.2.2:8000/profil-penerima/user/flutter/' + usn;
+    String url = 'http://127.0.0.1:8000/profil-penerima/user/flutter/' + usn;
  
     try {
       Map<String, dynamic> extractedData = {};
