@@ -1,14 +1,16 @@
+import 'package:daftar_vaksin/daftar_vaksin.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import './details.dart';
 import 'package:provider/provider.dart';
 import 'package:pedulilindungi2_mobile_app/common/cookie_request.dart';
+import 'package:profil_penerima/profil_penerima.dart';
  
 class MainDrawer extends StatelessWidget {
   const MainDrawer({Key? key}) : super(key: key);
 
-  Widget buildListTile(String title, IconData icon, Function tapHandler) {
+  Widget buildListTile(String title, IconData icon, Function() tapHandler) {
     return ListTile(
       leading: Icon(
         icon,
@@ -22,7 +24,7 @@ class MainDrawer extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ),
       ),
-      onTap: () {},
+      onTap: tapHandler,
     );
   }
  
@@ -37,19 +39,27 @@ class MainDrawer extends StatelessWidget {
             padding: const EdgeInsets.all(20),
             alignment: Alignment.centerLeft,
             color: Colors.lightBlue,
-            child: Text(
+            child: TextButton(onPressed: () {Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const MainProfilePenerima()),
+                                        );}, 
+            child: const Text(
               'Profil',
               style: TextStyle(
               fontWeight: FontWeight.w900,
               fontSize: 30,
-              color: Theme.of(context).primaryColor),
+              color: Colors.white),
             ),
+            )
+            
           ),
  
           const SizedBox(height: 20),
  
           buildListTile('Daftar Vaksin', Icons.coronavirus, () {
-            //Navigator.of(context).pushReplacementNamed('/');
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const DaftarVaksin()));
           }),
          
           buildListTile('Log Out', Icons.logout, () {
