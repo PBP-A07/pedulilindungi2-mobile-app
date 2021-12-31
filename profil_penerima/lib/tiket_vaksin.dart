@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:provider/provider.dart';
+import 'package:daftar_vaksin/daftar_vaksin.dart';
 import 'package:pedulilindungi2_mobile_app/common/cookie_request.dart';
 import '../profil_penerima.dart';
 
@@ -15,7 +16,7 @@ Future<String> postData(CookieRequest request) async {
     request.isBiodata = true;
     String usn = request.username;
     final response = await http.post(
-        Uri.parse("http://10.0.2.2:8000/profil-penerima/vaccine/flutter/delete/" + usn),
+        Uri.parse("http://127.0.0.1:8000/profil-penerima/vaccine/flutter/delete/" + usn),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
@@ -32,7 +33,7 @@ class TiketVaksin extends State<MainTiketVaksin> {
   Future<Map<String, dynamic>> fetchData(CookieRequest request) async {
     
     String usn = request.username;
-    String url = 'http://10.0.2.2:8000/profil-penerima/vaccine/flutter/get/' + usn;
+    String url = 'http://127.0.0.1:8000/profil-penerima/vaccine/flutter/get/' + usn;
  
     try {
       Map<String, dynamic> extractedData = {};
@@ -380,12 +381,12 @@ class ItemList extends StatelessWidget {
                         ),
                   label: const Text("Daftar Vaksinasi", style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),),
                   onPressed: () {
-                    // Navigator.pushReplacement(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //       builder: (context) =>
-                    //           const MainProfilePenerima()),
-                    // );
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              const DaftarVaksin()),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     primary: Colors.blue,

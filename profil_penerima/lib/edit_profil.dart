@@ -37,7 +37,7 @@ class _ProfileFormState extends State<ProfileForm> {
   void setInitState() async {
     final request = context.watch<CookieRequest>();
     String usn = request.username;
-    String url = 'http://10.0.2.2:8000/profil-penerima/user/flutter/' + usn;
+    String url = 'http://127.0.0.1:8000/profil-penerima/user/flutter/' + usn;
     Map<String, dynamic> data = {};
     try {
       final response = await http.get(Uri.parse(url));
@@ -88,7 +88,7 @@ class _ProfileFormState extends State<ProfileForm> {
   Future<Map<String, dynamic>> fetchData(CookieRequest request) async {
     
     String usn = request.username;
-    String url = 'http://10.0.2.2:8000/profil-penerima/user/flutter/' + usn;
+    String url = 'http://127.0.0.1:8000/profil-penerima/user/flutter/' + usn;
  
     try {
       Map<String, dynamic> extractedData = {};
@@ -109,7 +109,7 @@ class _ProfileFormState extends State<ProfileForm> {
     request.isBiodata = true;
     String usn = request.username;
     final response = await http.post(
-        Uri.parse("http://10.0.2.2:8000/profil-penerima/profile/edit/flutter/" + usn),
+        Uri.parse("http://127.0.0.1:8000/profil-penerima/profile/edit/flutter/" + usn),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
