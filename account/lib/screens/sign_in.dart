@@ -1,11 +1,17 @@
 // Referensi: https://github.com/whisnuys/simple-login-page
 
-import 'package:account/screens/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:pedulilindungi2_mobile_app/common/cookie_request.dart';
 import '../widgets/primary_button.dart';
 import '../theme.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+const _signUpURL = 'http://localhost:8000/auth/';
+
+void _launchURL() async => await canLaunch(_signUpURL)
+    ? await launch(_signUpURL)
+    : throw 'Could not launch $_signUpURL';
 
 class SigninPage extends StatefulWidget {
   const SigninPage({Key? key, required this.title}) : super(key: key);
@@ -215,12 +221,7 @@ class _SigninPageState extends State<SigninPage> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                const SignupPage(title: "PeduliLindungi2.0")),
-                      );
+                      _launchURL();
                     },
                     child: Text(
                       'Sign Up',
