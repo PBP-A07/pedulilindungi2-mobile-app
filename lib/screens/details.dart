@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:provider/provider.dart';
+import 'package:pedulilindungi2_mobile_app/common/cookie_request.dart';
  
 class Detail extends StatefulWidget {
   final List list;
@@ -12,7 +14,45 @@ class Detail extends StatefulWidget {
 }
  
 class _DetailState extends State<Detail> {
+  final _formKey = GlobalKey<FormState>();
+  var jawaban = "";
  
+  bool validate() {
+    bool status = false;
+    final form = _formKey.currentState;
+    form?.save();
+   
+    if (form!.validate()) {
+      form.save();
+      status = true;
+    } else {
+      status = false;
+    }
+   
+    return status;
+  }
+ 
+Future<String> postData(CookieRequest request) async {
+    // print("hello");
+    // print(widget.list[widget.index]["pk"]);
+
+    final response = await http.post(
+        Uri.parse("http://127.0.0.1:8000/post-jawaban-flutter"),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(<String, dynamic>{
+          'body' : jawaban,
+          'username' : request.username,
+          'forum' : widget.list[widget.index]["pk"]
+        }));
+ 
+    // print(response.body);
+    Map<String, dynamic> extractedData = jsonDecode(response.body);
+    // print(extractedData["msg"]);
+    return extractedData["msg"];
+  } 
+
 Future<Map<String, dynamic>> fetchData() async {
   String url = 'http://127.0.0.1:8000/question/${widget.list[widget.index]['pk']}/json';
   const url2 = 'http://127.0.0.1:8000/json-account';
@@ -45,12 +85,14 @@ Future<Map<String, dynamic>> fetchData() async {
  
   @override
   Widget build(BuildContext context) {
+    final request = context.watch<CookieRequest>();
+
   fetchData();
     return  Scaffold(
       appBar: AppBar(title: Text("${widget.list[widget.index]['fields']['title']}")),
       body: Container(
         color: Colors.white,
-        height: MediaQuery.of(context).size.height - 100,
+        height: 1000,
         padding: const EdgeInsets.all(20.0),
         child: Card(
           child: Center(
@@ -69,29 +111,77 @@ Future<Map<String, dynamic>> fetchData() async {
  
  
                 ),
+
+                Form(
+                            key: _formKey,
+                            child: Container(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Column(
+                                children: [
+                                  TextFormField(
+                                    decoration: const InputDecoration(
+                                      hintText: "Masukkan jawaban Anda",
+                                      labelText: "Jawaban",
+                                    ),
  
-                FutureBuilder(
-                          future: fetchData(),
-                          builder: (context, snapshot) {
-                            if (snapshot.hasError){}
-                              // print(snapshot.error);
+                                    validator: (value) {
+                                      if (value!.isEmpty) {
+                                        return 'Jawaban tidak boleh kosong';
+                                      }
+                                      jawaban = value;
+                                      return null;
+                                    },
+                                  ),
  
-                            return snapshot.hasData
-                            ? ItemList(
-                              list: snapshot.data as Map,
-                              parentID: widget.list[widget.index]['pk'],
-                            )
-                            : const Center(
-                              child: CircularProgressIndicator(),
-                            );
-                          },
-                        )
-              ],
+                                  const SizedBox(height:25.0),
+                                 
+                                  ElevatedButton(
+                                    child: Ink(
+                                      decoration:  BoxDecoration(
+                                        borderRadius: BorderRadius.circular(60),
+                                      ),
+                                      padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 7),
+                                      child: const Text("Kirim Jawaban", style: TextStyle(
+                                        color: Colors.white,
+                                      )),
+                                    ),
+                                    onPressed: () {
+                                      if (_formKey.currentState!.validate()) {
+                                        postData(request);
+                                
+                                        Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  Detail(list: widget.list, index: widget.index,)),
+                                        );
+                                                                     
+                                      }
+ 
+                    
+                                    }) ],
             ),
           ),
         ),
+        FutureBuilder(
+                      future: fetchData(),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasError){}
+                        return snapshot.hasData
+                        ? ItemList(
+                          list: snapshot.data as Map,
+                          parentID: widget.list[widget.index]['pk'],
+                        )
+                        : const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                    )
+
+        
+        ]
       ),
-    );
+        ))));
   }
 }
  
@@ -170,7 +260,7 @@ class _ItemState extends State<ItemList> {
   //  print(list);
   //  print(list.length);
     return SizedBox(
-      height: 300,
+      height: MediaQuery.of(context).size.height - 400,
       child:ListView.builder(
       itemCount: widget.list['forums'].length,
       itemBuilder: (context, i) {
@@ -223,8 +313,9 @@ class _ItemState extends State<ItemList> {
             ),
            
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text('${widget.list['forums'][i]['fields']['body']}'),
+                Text('${widget.list['forums'][i]['fields']['body']}', style: const TextStyle(fontSize: 18),),
                 Text('dibuat oleh '+a+' pada '+time.substring(0, 10)+' pukul ${time.substring(11, 19)}'),
  
               ],
