@@ -48,12 +48,12 @@ class _DaftarVaksinState extends State<DaftarVaksinState> {
   String _tempatChoose = "Tempat";
   Map data = {};
 
-  void printPilihan(){
-    print("Kota: " + _kotaChoose);
-    print("Tanggal: " + _tanggalChoose);
-    print("Jenis Vaksin: " + _jenisVaksinChoose);
-    print("Tempat: " + _tempatChoose);
-  }
+  // void printPilihan(){
+  //   print("Kota: " + _kotaChoose);
+  //   print("Tanggal: " + _tanggalChoose);
+  //   print("Jenis Vaksin: " + _jenisVaksinChoose);
+  //   print("Tempat: " + _tempatChoose);
+  // }
 
   Future<String> postData(CookieRequest request) async {
     request.isBiodata = true;
