@@ -63,7 +63,7 @@ class _DaftarVaksinState extends State<DaftarVaksin> {
         appBar: AppBar(
           // Here we take the value from the MyHomePage object that was created by
           // the App.build method, and use it to set our appbar title.
-          title: Text("Daftar Vaksin", style: TextStyle(fontSize: 24.0)),
+          title: const Text("Daftar Vaksin", style: TextStyle(fontSize: 24.0)),
         ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
