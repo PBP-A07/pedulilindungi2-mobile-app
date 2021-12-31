@@ -2,7 +2,7 @@ name: biodata
 description: A new Flutter package project.
 version: 0.0.1
 publish_to: "none"
-homepage:
+homepage: dummy
 
 environment:
   sdk: ">=2.12.0 <3.0.0"

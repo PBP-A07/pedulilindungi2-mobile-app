@@ -46,7 +46,7 @@ class LihatCatatanPenyediaState extends State<LihatCatatanPenyedia> {
       ),
       body: Center(
         child: SizedBox(
-          width: MediaQuery.of(context).size.width * 0.85,
+          width: MediaQuery.of(context).size.width * 0.9,
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -106,7 +106,7 @@ class LihatCatatanPenyediaState extends State<LihatCatatanPenyedia> {
                       if (snapshot.hasData) {
                         if (snapshot.data!.isNotEmpty) {
                           return ListView.builder(
-                            physics: const NeverScrollableScrollPhysics(),
+                            physics: const ClampingScrollPhysics(),
                             shrinkWrap: true,
                             itemCount: snapshot.data!.length,
                             itemBuilder: (context, index) {
