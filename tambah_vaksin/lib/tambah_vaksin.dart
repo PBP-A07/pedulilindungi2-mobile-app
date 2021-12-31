@@ -44,7 +44,7 @@ class _TambahVaksinState extends State<TambahVaksin> {
         key: _formKey,
         child: SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(20.0),
             child: Column(
               children: [
                 Text("Tambah Vaksin"),
