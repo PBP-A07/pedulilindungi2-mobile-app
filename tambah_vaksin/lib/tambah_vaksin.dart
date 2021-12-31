@@ -47,15 +47,15 @@ class _TambahVaksinState extends State<TambahVaksin> {
             padding: const EdgeInsets.all(20.0),
             child: Column(
               children: [
-                Text("Tambah Vaksin"),
+                const Text("Tambah Vaksin"),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
-                    decoration: new InputDecoration(
+                    decoration: InputDecoration(
                       hintText: "contoh: Sinovac",
                       labelText: "Nama Vaksin",
                       border: OutlineInputBorder(
-                          borderRadius: new BorderRadius.circular(5.0)),
+                          borderRadius: BorderRadius.circular(5.0)),
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
@@ -68,10 +68,10 @@ class _TambahVaksinState extends State<TambahVaksin> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
-                    decoration: new InputDecoration(
+                    decoration: InputDecoration(
                       labelText: "Jumlah",
                       border: OutlineInputBorder(
-                          borderRadius: new BorderRadius.circular(5.0)),
+                          borderRadius: BorderRadius.circular(5.0)),
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
