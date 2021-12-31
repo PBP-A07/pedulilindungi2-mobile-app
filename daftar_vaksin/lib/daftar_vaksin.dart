@@ -3,6 +3,7 @@ library daftar_vaksin;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
+import 'package:pedulilindungi2_mobile_app/screens/after_login.dart';
 import 'dart:convert';
 import 'package:provider/provider.dart';
 import 'package:pedulilindungi2_mobile_app/common/cookie_request.dart';
@@ -45,6 +46,7 @@ class _DaftarVaksinState extends State<DaftarVaksinState> {
   String _tanggalChoose = "Tanggal";
   String _jenisVaksinChoose = "Jenis Vaksin";
   String _tempatChoose = "Tempat";
+  Map data = {};
 
   void printPilihan(){
     print("Kota: " + _kotaChoose);
@@ -56,7 +58,7 @@ class _DaftarVaksinState extends State<DaftarVaksinState> {
   Future<String> postData(CookieRequest request) async {
     request.isBiodata = true;
     final response = await http.post(
-        Uri.parse("http://127.0.0.1:8000/daftar-vaksin/flutter"),
+        Uri.parse("http://127.0.0.1:8000/daftar-vaksin/flutter/daftar-vaksin"),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
@@ -65,15 +67,37 @@ class _DaftarVaksinState extends State<DaftarVaksinState> {
           'tanggal': _tanggalChoose,
           'jenisVaksin': _jenisVaksinChoose,
           'tempat': _tempatChoose,
-          'username': request.username
+          'place': _tempatChoose,
+          'penerima': request.username
         }));
 
     Map<String, dynamic> extractedData = jsonDecode(response.body);
     return extractedData["msg"];
   }
 
+  Future<Map<String, dynamic>> fetchData() async {
+
+    String url = 'http://10.0.2.2:8000/daftar-vaksin/flutter/get-data-penyedia';
+
+    try {
+      Map<String, dynamic> extractedData = {};
+
+      final response = await http.get(Uri.parse(url));
+      extractedData['penyedia'] = jsonDecode(response.body);
+      data = extractedData;
+
+      return extractedData;
+    }
+
+    catch (error) {
+      // print(error);
+      return {"Error" : "Sorry"};
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    final request = context.watch<CookieRequest>();
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -82,19 +106,19 @@ class _DaftarVaksinState extends State<DaftarVaksinState> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Container(
-            margin: EdgeInsets.only(top: 32, left: 16, right: 16),
-            padding: EdgeInsets.only(left: 16, right: 16),
+            margin: const EdgeInsets.only(top: 32, left: 16, right: 16),
+            padding: const EdgeInsets.only(left: 16, right: 16),
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey, width: 1),
               borderRadius: BorderRadius.circular(8),
             ),
             child: DropdownButton<String>(
               dropdownColor: Colors.grey,
-              icon: Icon(Icons.arrow_drop_down),
+              icon: const Icon(Icons.arrow_drop_down),
               iconSize: 24,
               isExpanded: true,
-              underline: SizedBox(),
-              style: TextStyle(
+              underline: const SizedBox(),
+              style: const TextStyle(
                   color: Colors.black,
                   fontSize: 16
               ),
@@ -104,7 +128,7 @@ class _DaftarVaksinState extends State<DaftarVaksinState> {
                   _kotaChoose = newValue!;
                 });
               },
-              items: <String>["Kota", "Gambir", "Senen", "Tanah Abang", "Cengkareng", "Kebun Jeruk",  "Pasar Minggu", "Pancoran"].map<DropdownMenuItem<String>>((String valueItem) {
+              items: data['penyedia'][0]['fields']['kota'].map<DropdownMenuItem<String>>((String valueItem) {
                 return DropdownMenuItem<String>(
                   value: valueItem,
                   child: Text(valueItem),
@@ -114,19 +138,19 @@ class _DaftarVaksinState extends State<DaftarVaksinState> {
           ),
 
           Container(
-            margin: EdgeInsets.only(top: 32, left: 16, right: 16),
-            padding: EdgeInsets.only(left: 16, right: 16),
+            margin: const EdgeInsets.only(top: 32, left: 16, right: 16),
+            padding: const EdgeInsets.only(left: 16, right: 16),
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey, width: 1),
               borderRadius: BorderRadius.circular(8),
             ),
             child: DropdownButton<String>(
               dropdownColor: Colors.grey,
-              icon: Icon(Icons.arrow_drop_down),
+              icon: const Icon(Icons.arrow_drop_down),
               iconSize: 24,
               isExpanded: true,
-              underline: SizedBox(),
-              style: TextStyle(
+              underline: const SizedBox(),
+              style: const TextStyle(
                   color: Colors.black,
                   fontSize: 16
               ),
@@ -136,7 +160,7 @@ class _DaftarVaksinState extends State<DaftarVaksinState> {
                   _tanggalChoose = newValue!;
                 });
               },
-              items: <String>["Tanggal", "16/11/2021", "17/11/2021", "18/11/2021", "19/11/2021", "20/11/2021"].map<DropdownMenuItem<String>>((String valueItem) {
+              items: data['penyedia'][0]['fields']['tanggal'].map<DropdownMenuItem<String>>((String valueItem) {
                 return DropdownMenuItem<String>(
                   value: valueItem,
                   child: Text(valueItem),
@@ -146,19 +170,19 @@ class _DaftarVaksinState extends State<DaftarVaksinState> {
           ),
 
           Container(
-            margin: EdgeInsets.only(top: 32, left: 16, right: 16),
-            padding: EdgeInsets.only(left: 16, right: 16),
+            margin: const EdgeInsets.only(top: 32, left: 16, right: 16),
+            padding: const EdgeInsets.only(left: 16, right: 16),
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey, width: 1),
               borderRadius: BorderRadius.circular(8),
             ),
             child: DropdownButton<String>(
               dropdownColor: Colors.grey,
-              icon: Icon(Icons.arrow_drop_down),
+              icon: const Icon(Icons.arrow_drop_down),
               iconSize: 24,
               isExpanded: true,
-              underline: SizedBox(),
-              style: TextStyle(
+              underline: const SizedBox(),
+              style: const TextStyle(
                   color: Colors.black,
                   fontSize: 16
               ),
@@ -168,7 +192,7 @@ class _DaftarVaksinState extends State<DaftarVaksinState> {
                   _jenisVaksinChoose = newValue!;
                 });
               },
-              items: <String>["Jenis Vaksin", "Sinovac", "AstraZeneca", "Sinopharm"].map<DropdownMenuItem<String>>((String valueItem) {
+              items: data['penyedia'][0]['fields']['jenis_vaksin'].map<DropdownMenuItem<String>>((String valueItem) {
                 return DropdownMenuItem<String>(
                   value: valueItem,
                   child: Text(valueItem),
@@ -178,19 +202,19 @@ class _DaftarVaksinState extends State<DaftarVaksinState> {
           ),
 
           Container(
-            margin: EdgeInsets.only(top: 32, left: 16, right: 16),
-            padding: EdgeInsets.only(left: 16, right: 16),
+            margin: const EdgeInsets.only(top: 32, left: 16, right: 16),
+            padding: const EdgeInsets.only(left: 16, right: 16),
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey, width: 1),
               borderRadius: BorderRadius.circular(8),
             ),
             child: DropdownButton<String>(
               dropdownColor: Colors.grey,
-              icon: Icon(Icons.arrow_drop_down),
+              icon: const Icon(Icons.arrow_drop_down),
               iconSize: 24,
               isExpanded: true,
-              underline: SizedBox(),
-              style: TextStyle(
+              underline: const SizedBox(),
+              style: const TextStyle(
                   color: Colors.black,
                   fontSize: 16
               ),
@@ -200,7 +224,7 @@ class _DaftarVaksinState extends State<DaftarVaksinState> {
                   _tempatChoose = newValue!;
                 });
               },
-              items: <String>["Tempat", "Jakarta Medical Center Hospital", "RSCM", "RS UI", "RSUD Kemayoran"].map<DropdownMenuItem<String>>((String valueItem) {
+              items: data['penyedia'][0]['fields']['tempat'].map<DropdownMenuItem<String>>((String valueItem) {
                 return DropdownMenuItem<String>(
                   value: valueItem,
                   child: Text(valueItem),
@@ -210,28 +234,55 @@ class _DaftarVaksinState extends State<DaftarVaksinState> {
           ),
 
           Container(
-            margin: EdgeInsets.only(top: 32, left: 16, right: 16),
+            margin: const EdgeInsets.only(top: 32, left: 16, right: 16),
             child: RaisedButton(
-                color: Color(0xff3562FF),
+                color: const Color(0xff3562FF),
                 textColor: Colors.white,
                 child: Padding(
-                    padding: EdgeInsets.only(left: 16, right: 16, top: 12, bottom: 12),
+                    padding: const EdgeInsets.only(left: 16, right: 16, top: 12, bottom: 12),
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: <Widget>[
+                        children: const <Widget>[
                           Text("Daftar Vaksinasi", style: TextStyle(fontSize: 16.0)),
                         ]
                     )
                 ),
                 onPressed: () => {
-                  printPilihan()
+                  postData(request)
                 },
-                shape: new RoundedRectangleBorder(
-                  borderRadius: new BorderRadius.circular(8.0),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
                 )
             ),
           ),
 
+          Container(
+            margin: const EdgeInsets.only(top: 32, left: 16, right: 16),
+            child: RaisedButton(
+                color: const Color(0xFFFFFFFF),
+                textColor: Colors.black,
+                child: Padding(
+                    padding: const EdgeInsets.only(left: 16, right: 16, top: 12, bottom: 12),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: const <Widget>[
+                          Text("Kembali ke Menu Utama", style: TextStyle(fontSize: 16.0)),
+                        ]
+                    )
+                ),
+                onPressed: () => {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                      const MyHomePage()),
+                  )
+                },
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                )
+            ),
+          ),
 
         ],
         // Center is a layout widget. It takes a single child and positions it
