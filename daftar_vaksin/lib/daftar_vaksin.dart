@@ -235,9 +235,11 @@ class _DaftarVaksinState extends State<DaftarVaksinState> {
 
           Container(
             margin: const EdgeInsets.only(top: 32, left: 16, right: 16),
-            child: RaisedButton(
-                color: const Color(0xff3562FF),
-                textColor: Colors.white,
+            child: ElevatedButton(
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(const Color(0xff3562FF)),
+                    foregroundColor: MaterialStateProperty.all<Color>(Colors.white)
+                ),
                 child: Padding(
                     padding: const EdgeInsets.only(left: 16, right: 16, top: 12, bottom: 12),
                     child: Row(
@@ -250,17 +252,16 @@ class _DaftarVaksinState extends State<DaftarVaksinState> {
                 onPressed: () => {
                   postData(request)
                 },
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8.0),
-                )
             ),
           ),
 
           Container(
             margin: const EdgeInsets.only(top: 32, left: 16, right: 16),
-            child: RaisedButton(
-                color: const Color(0xFFFFFFFF),
-                textColor: Colors.black,
+            child: ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                  foregroundColor: MaterialStateProperty.all<Color>(Colors.black)
+                ),
                 child: Padding(
                     padding: const EdgeInsets.only(left: 16, right: 16, top: 12, bottom: 12),
                     child: Row(
@@ -278,9 +279,6 @@ class _DaftarVaksinState extends State<DaftarVaksinState> {
                       const MyHomePage()),
                   )
                 },
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8.0),
-                )
             ),
           ),
 
