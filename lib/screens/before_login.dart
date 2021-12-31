@@ -40,9 +40,6 @@ class _WelcomePage extends State<WelcomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text('Flutter Horizontal Swipe Example'),
-      // ),
       body: Center(
           child: PageView(
         controller: controller,
@@ -64,20 +61,9 @@ class _WelcomePage extends State<WelcomePage> {
   }
 }
 
-// class SecondScreen extends StatelessWidget {
-// @override
-// Widget build(BuildContext context) {
-// 	return Scaffold(
-// 	appBar: AppBar(title:Text("GeeksForGeeks")),
-// 	body: Center(
-// 		child:Text("Home page",textScaleFactor: 2,)
-// 	),
-// 	);
-// }
-// }
 
 class AboutPage extends StatelessWidget {
-  // const AboutPage({Key? key}) : super(key: key);
+
   final VoidCallback onButtonPressed;
 
   const AboutPage({required this.onButtonPressed, Key? key}) : super(key: key);
@@ -86,82 +72,84 @@ class AboutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       child: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("assets/images/pict4.png"),
-                fit: BoxFit.cover),
-          ),
-          // color: Colors.white,
-          child: Padding(
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.start,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage("assets/images/pict4.png"),
+              fit: BoxFit.cover),
+        ),
+
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      const SizedBox(
-                        width: 100,
+                  const SizedBox(
+                    width: 100,
+                  ),
+                  ElevatedButton(
+                    onPressed: onButtonPressed,
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(60),
                       ),
-                      ElevatedButton(
-                        onPressed: onButtonPressed,
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(60),
+                      padding: const EdgeInsets.all(0.0),
+                      elevation: 10,
+
+                    ),
+                    child: Ink(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(60),
+                          gradient: LinearGradient(
+                            colors: <Color>[
+                              Colors.blue.shade600,
+                              Colors.deepPurple.shade300,
+                            ],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
                           ),
-                          padding: const EdgeInsets.all(0.0),
-                          elevation: 10,
-                          // splashColor: Colors.lightBlue[100],
+
                         ),
-                        child: Ink(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(60),
-                              gradient: LinearGradient(
-                                colors: <Color>[
-                                  Colors.blue.shade600,
-                                  Colors.deepPurple.shade300,
-                                ],
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomRight,
-                              ),
-                              // color: Colors.blue.withOpacity(0.5)
-                            ),
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 20),
-                            child: const Icon(Icons.arrow_forward)),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  const Text(
-                    "Selamat",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  const Text(
-                    "datang, ",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(
-                    height: 25,
-                  ),
-                  const Text(
-                    "Pedulilindungi2.0 merupakan karya kelompok A07 dalam mata kuliah PBP yang bertujuan untuk mempermudah masyarakat dalam mendaftarkan diri dalam program vaksinasi.",
-                    style: TextStyle(color: Colors.white, fontSize: 18),
-                  ),
-                  const SizedBox(
-                    height: 70,
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 20),
+                        child: const Icon(Icons.arrow_forward)),
                   ),
                 ],
-              ))),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              const Text(
+                "Selamat",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold),
+              ),
+              const Text(
+                "datang, ",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(
+                height: 25,
+              ),
+              const Text(
+                "Pedulilindungi2.0 merupakan karya kelompok A07 dalam mata kuliah PBP yang bertujuan untuk mempermudah masyarakat dalam mendaftarkan diri dalam program vaksinasi.",
+                style: TextStyle(color: Colors.white, fontSize: 18),
+              ),
+              const SizedBox(
+                height: 70,
+              ),
+            ],
+          )
+        )
+      ),
     );
   }
 }
@@ -212,7 +200,6 @@ class ToSignInPage extends StatelessWidget {
                 ),
                 padding: const EdgeInsets.all(0.0),
                 elevation: 10,
-                // splashColor: Colors.lightBlue[100],
               ),
               child: Ink(
                 decoration: BoxDecoration(
@@ -245,7 +232,6 @@ class ToSignInPage extends StatelessWidget {
                 ),
                 padding: const EdgeInsets.all(0.0),
                 elevation: 10,
-                // splashColor: Colors.lightBlue[100],
               ),
               child: Ink(
                 decoration: BoxDecoration(
