@@ -128,7 +128,7 @@ class _DetailState extends State<Detail> {
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
                               postData(request);
-                              Navigator.push(
+                              Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
@@ -227,7 +227,7 @@ class _ItemState extends State<ItemList> {
           child: GestureDetector(
               onTap: ()=>Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (BuildContext context)=> const Text('data')
+                  builder: (BuildContext context)=> Text('${widget.list['forums'][i]['fields']['body']}', style: const TextStyle(fontSize: 18),)
                 )
               ),
            
