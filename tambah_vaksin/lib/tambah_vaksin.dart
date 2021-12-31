@@ -8,6 +8,7 @@ import 'package:pedulilindungi2_mobile_app/common/cookie_request.dart';
 
 
 class TambahVaksin extends StatefulWidget {
+  const TambahVaksin({Key? key}) : super(key: key);
   @override
   _TambahVaksinState createState() => _TambahVaksinState();
 }
@@ -38,7 +39,6 @@ class _TambahVaksinState extends State<TambahVaksin> {
 
   @override
   Widget build(BuildContext context) {
-    final request = context.watch<CookieRequest>();
     return Scaffold(
       body: Form(
         key: _formKey,
@@ -81,12 +81,11 @@ class _TambahVaksinState extends State<TambahVaksin> {
                     },
                   ),
                 ),
-                RaisedButton(
-                  child: Text(
+                ElevatedButton(
+                  child: const Text(
                     "Submit",
-                    style: TextStyle(color: Colors.white),
+                    style: const TextStyle(color: Colors.white),
                   ),
-                  color: Colors.blue,
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {}
                   },
