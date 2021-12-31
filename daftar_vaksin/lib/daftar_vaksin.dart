@@ -7,6 +7,7 @@ import 'package:pedulilindungi2_mobile_app/screens/after_login.dart';
 import 'package:provider/provider.dart';
 import 'package:pedulilindungi2_mobile_app/common/cookie_request.dart';
 
+
 class DaftarVaksin extends StatefulWidget {
 
   const DaftarVaksin({Key? key}) : super(key: key);
@@ -20,7 +21,6 @@ class _DaftarVaksinState extends State<DaftarVaksin> {
   String _tanggalChoose = "Tanggal";
   String _jenisVaksinChoose = "Jenis Vaksin";
   String _tempatChoose = "Tempat";
-  Map data = {};
 
 
   // void printPilihan(){
@@ -31,7 +31,6 @@ class _DaftarVaksinState extends State<DaftarVaksin> {
   // }
 
   Future<String> postData(CookieRequest request) async {
-    request.isBiodata = true;
     final response = await http.post(
         Uri.parse("http://127.0.0.1:8000/daftar-vaksin/flutter/daftar-vaksin"),
         headers: <String, String>{
@@ -40,40 +39,32 @@ class _DaftarVaksinState extends State<DaftarVaksin> {
         body: jsonEncode(<String, String>{
           'kota': _kotaChoose,
           'tanggal': _tanggalChoose,
-          'jenisVaksin': _jenisVaksinChoose,
+          'jenis': _jenisVaksinChoose,
           'tempat': _tempatChoose,
           'place': _tempatChoose,
           'penerima': request.username
         }));
 
     Map<String, dynamic> extractedData = jsonDecode(response.body);
+    Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+        builder: (context) =>
+          const MyHomePage()));
+
     return extractedData["msg"];
-  }
-
-  Future<Map<String, dynamic>> fetchData() async {
-
-    String url = 'http://10.0.2.2:8000/daftar-vaksin/flutter/get-data-penyedia';
-
-    try {
-      Map<String, dynamic> extractedData = {};
-
-      final response = await http.get(Uri.parse(url));
-      extractedData['penyedia'] = jsonDecode(response.body);
-      data = extractedData;
-
-      return extractedData;
-    }
-
-    catch (error) {
-      // print(error);
-      return {"Error" : "Sorry"};
-    }
   }
 
   @override
   Widget build(BuildContext context) {
+    // fetchData();
     final request = context.watch<CookieRequest>();
     return Scaffold(
+        appBar: AppBar(
+          // Here we take the value from the MyHomePage object that was created by
+          // the App.build method, and use it to set our appbar title.
+          title: Text("Daftar Vaksin", style: TextStyle(fontSize: 24.0)),
+        ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
@@ -100,7 +91,7 @@ class _DaftarVaksinState extends State<DaftarVaksin> {
                   _kotaChoose = newValue!;
                 });
               },
-              items: data['penyedia'][0]['fields']['kota'].map<DropdownMenuItem<String>>((String valueItem) {
+              items: <String>["Kota", "Gambir", "Senen", "Tanah Abang", "Cengkareng", "Kebun Jeruk",  "Pasar Minggu", "Pancoran"].map<DropdownMenuItem<String>>((String valueItem) {
                 return DropdownMenuItem<String>(
                   value: valueItem,
                   child: Text(valueItem),
@@ -132,7 +123,7 @@ class _DaftarVaksinState extends State<DaftarVaksin> {
                   _tanggalChoose = newValue!;
                 });
               },
-              items: data['penyedia'][0]['fields']['tanggal'].map<DropdownMenuItem<String>>((String valueItem) {
+              items: <String>["Tanggal", "2022-01-16", "2022-01-17", "2022-01-18", "2022-01-19", "2022-01-20"].map<DropdownMenuItem<String>>((String valueItem) {
                 return DropdownMenuItem<String>(
                   value: valueItem,
                   child: Text(valueItem),
@@ -164,7 +155,7 @@ class _DaftarVaksinState extends State<DaftarVaksin> {
                   _jenisVaksinChoose = newValue!;
                 });
               },
-              items: data['penyedia'][0]['fields']['jenis_vaksin'].map<DropdownMenuItem<String>>((String valueItem) {
+              items: <String>["Jenis Vaksin", "Sinovac", "AstraZeneca", "Sinopharm"].map<DropdownMenuItem<String>>((String valueItem) {
                 return DropdownMenuItem<String>(
                   value: valueItem,
                   child: Text(valueItem),
@@ -196,7 +187,7 @@ class _DaftarVaksinState extends State<DaftarVaksin> {
                   _tempatChoose = newValue!;
                 });
               },
-              items: data['penyedia'][0]['fields']['tempat'].map<DropdownMenuItem<String>>((String valueItem) {
+              items: <String>["Tempat", "Jakarta Medical Center Hospital", "RSCM", "RS UI", "RSUD Kemayoran"].map<DropdownMenuItem<String>>((String valueItem) {
                 return DropdownMenuItem<String>(
                   value: valueItem,
                   child: Text(valueItem),
