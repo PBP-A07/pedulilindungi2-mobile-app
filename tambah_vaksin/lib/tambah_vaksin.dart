@@ -3,7 +3,6 @@ library tambah_vaksin;
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:provider/provider.dart';
 import 'package:pedulilindungi2_mobile_app/common/cookie_request.dart';
 
 
@@ -84,7 +83,7 @@ class _TambahVaksinState extends State<TambahVaksin> {
                 ElevatedButton(
                   child: const Text(
                     "Submit",
-                    style: const TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.white),
                   ),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {}
