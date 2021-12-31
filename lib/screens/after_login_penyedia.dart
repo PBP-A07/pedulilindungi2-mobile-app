@@ -39,12 +39,12 @@ class MainDrawer extends StatelessWidget {
             padding: const EdgeInsets.all(20),
             alignment: Alignment.centerLeft,
             color: Colors.lightBlue,
-            child: TextButton(onPressed: () {Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const ProfilPenyedia()),
-                                        );}, 
+            child: TextButton(onPressed: () {Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      const ProfilPenyedia()),
+            );}, 
             child: const Text(
               'Profil',
               style: TextStyle(
@@ -113,7 +113,6 @@ class _MyHomePageStatePenyedia extends State<MyHomePagePenyedia> {
     }
  
     catch (error) {
-      // print(error);
       return {"Error" : "Sorry"};
     }
   }
@@ -210,7 +209,7 @@ class _MyHomePageStatePenyedia extends State<MyHomePagePenyedia> {
                   padding: const EdgeInsets.only(top: .0),
                   child: SizedBox(
                     height: MediaQuery.of(context).size.height - 250.0,
-                    // child: Container(
+
                       child: ListView(
                         children: [
                           Form(
@@ -258,11 +257,6 @@ class _MyHomePageStatePenyedia extends State<MyHomePagePenyedia> {
                                     child: Ink(
                                       decoration:  BoxDecoration(
                                         borderRadius: BorderRadius.circular(60),
-                                        // gradient:  LinearGradient(
-                                        //   colors: <Color>[Colors.blue.shade600, Colors.deepPurple.shade300,],
-                                        //   begin: Alignment.topLeft,
-                                        //   end: Alignment.bottomRight,
-                                        // ),
                                       ),
                                       padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 7),
                                       child: const Text("Kirim", style: TextStyle(
@@ -271,13 +265,10 @@ class _MyHomePageStatePenyedia extends State<MyHomePagePenyedia> {
                                     ),
                                     onPressed: () {
                                       if (_formKey.currentState!.validate()) {
-                                        // print("Pertanyaan telah terkirim");
-                                        // print("Berikut merupakan forum baru yang Anda buat: ");
-                                        // print("Judul Forum : $judul");
-                                        // print("Pertanyaan  : $pertanyaan");
+
                                         postData(request);
                                 
-                                        Navigator.pushReplacement(
+                                        Navigator.push(
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
@@ -313,7 +304,7 @@ class _MyHomePageStatePenyedia extends State<MyHomePagePenyedia> {
                           )
                         ]
                       )  
-                    // )
+
                   )
                 )
               ]
@@ -331,10 +322,7 @@ class ItemList extends StatelessWidget {
   final Map list;
  
   const ItemList({Key? key, required this.list}) : super(key: key);
-  // ItemList ({
-  //   required this.list,
-  // });
- 
+
   String getAuthor(pk) {
     for (var auth in list['accounts']) {
       if (auth["pk"] == pk) {
