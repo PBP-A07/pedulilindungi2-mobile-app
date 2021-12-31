@@ -11,6 +11,26 @@ class WelcomePage extends StatefulWidget {
 
 class _WelcomePage extends State<WelcomePage> {
   final controller = PageController(initialPage: 0);
+  int bottomSelectedIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  void pageChanged(int index) {
+    setState(() {
+      bottomSelectedIndex = index;
+    });
+  }
+
+  void bottomTapped(int index) {
+    setState(() {
+      bottomSelectedIndex = index;
+      controller.animateToPage(index,
+          duration: const Duration(milliseconds: 500), curve: Curves.ease);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +40,47 @@ class _WelcomePage extends State<WelcomePage> {
       // ),
       body: Center(
         child: PageView(controller: controller,
+        onPageChanged: (index) {
+          pageChanged(index);
+        },
         children: <Widget>[
-          Container(
+          AboutPage(
+            onButtonPressed: () => controller.animateToPage(
+                1,
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.linear,
+              ),
+          ), 
+          const ToSignInPage(),
+        ],)        
+      ),
+    );
+  }
+}
+
+// class SecondScreen extends StatelessWidget {
+// @override
+// Widget build(BuildContext context) {
+// 	return Scaffold(
+// 	appBar: AppBar(title:Text("GeeksForGeeks")),
+// 	body: Center(
+// 		child:Text("Home page",textScaleFactor: 2,)
+// 	),
+// 	);
+// }
+// }
+
+
+class AboutPage extends StatelessWidget {
+  // const AboutPage({Key? key}) : super(key: key);
+  final VoidCallback onButtonPressed;
+
+  const AboutPage({required this.onButtonPressed, Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      child: Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
                   image: AssetImage("assets/images/pict4.png"),
@@ -35,6 +94,40 @@ class _WelcomePage extends State<WelcomePage> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        const SizedBox(width: 100,),
+                        ElevatedButton(onPressed: onButtonPressed
+                          , style: 
+                          ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(60),
+                          ),
+                          padding: const EdgeInsets.all(0.0),
+                          elevation: 10,
+                          // splashColor: Colors.lightBlue[100],
+                          ),
+                        child: Ink(
+                          decoration:  BoxDecoration(
+                            borderRadius: BorderRadius.circular(60),
+                            gradient:  LinearGradient(
+                              colors: <Color>[Colors.blue.shade600, Colors.deepPurple.shade300,],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
+                            // color: Colors.blue.withOpacity(0.5)
+                          ),
+                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                        child: const Icon(Icons.arrow_forward
+                        )
+                        
+                  ),),
+
+                      ],
+                    ),
+                    
+                    const SizedBox(height: 30,),
                     const Text("Selamat", 
                       style: TextStyle(
                         color: Colors.white, 
@@ -56,21 +149,24 @@ class _WelcomePage extends State<WelcomePage> {
                         fontSize: 18
                       ),
                     ),
-                    const SizedBox(height: 50,),
-                    Text(">>>>>",
-                      textAlign: TextAlign.right,
-                      style: TextStyle(
-                        color: Colors.white.withOpacity(0.5),
-                        fontSize: 12
-                      ),
-                    ),
+                    const SizedBox(height: 70,),
                   ],
                 ) 
             )
             
-            
           ),
-          Container(
+    );
+  }
+}
+
+
+class ToSignInPage extends StatelessWidget {
+  const ToSignInPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      child: Container(
             color: Colors.white,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -89,7 +185,7 @@ class _WelcomePage extends State<WelcomePage> {
                 const SizedBox(height: 20,),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pushReplacement(
+                    Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) =>
@@ -122,7 +218,7 @@ class _WelcomePage extends State<WelcomePage> {
                 const SizedBox(height:20),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pushReplacement(
+                    Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) =>
@@ -155,20 +251,6 @@ class _WelcomePage extends State<WelcomePage> {
               ],
             ),
           ),
-        ],)        
-      ),
     );
   }
 }
-
-// class SecondScreen extends StatelessWidget {
-// @override
-// Widget build(BuildContext context) {
-// 	return Scaffold(
-// 	appBar: AppBar(title:Text("GeeksForGeeks")),
-// 	body: Center(
-// 		child:Text("Home page",textScaleFactor: 2,)
-// 	),
-// 	);
-// }
-// }
